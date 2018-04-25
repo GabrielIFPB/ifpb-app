@@ -12,7 +12,7 @@ const httpOptions = {
 
 @Injectable()
 export class AlunoService {
-	
+
 	private _url = '';
 
 	constructor(private _http: HttpClient) { }

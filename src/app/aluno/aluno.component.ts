@@ -18,8 +18,8 @@ export class AlunoComponent implements OnInit {
 		tipo: true,
 		ativo: true,
 		// roles: {}, // List<Role> roles
-		TIPO_FUNCIONARIO: 1,
-		TIPO_ALUNO: 1,
+		// TIPO_FUNCIONARIO: 1,
+		// TIPO_ALUNO: 1,
 
 		matricula: '2017.3',
 		// curso: {}, //Curso
