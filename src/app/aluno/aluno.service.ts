@@ -14,8 +14,6 @@ const httpOptions = {
 export class AlunoService {
 	
 	private _url = '';
-	// private _alunos: Aluno[];
-	// private _aluno: Aluno;
 
 	constructor(private _http: HttpClient) { }
 
@@ -34,15 +32,48 @@ export class AlunoService {
 			);
 	}
 
-	getAluno(): Observable<Aluno> {
-		return this._http.get<Aluno>(this._url)
+	getAluno(aluno: Aluno | number): Observable<Aluno> {
+		const id = typeof aluno === 'number' ? aluno : aluno.id;
+		const url = `${this._url}/${id}`;
+		return this._http.get<Aluno>(url)
 			.pipe(
 				tap(aluno => console.log('')),
 				catchError(this.handleError<Aluno>('get'))
 			);
 	}
 
-	postAluno(aluno: Aluno){
-		return aluno;
+	postAluno(aluno: Aluno): Observable<Aluno> {
+		return this._http.post<Aluno>(this._url, aluno, httpOptions)
+			.pipe(
+				tap(aluno => console.log('')),
+				catchError(this.handleError<Aluno>(''))
+			);
+	}
+
+	putAluno(aluno: Aluno): Observable<Aluno> {
+		return this._http.put<Aluno>(this._url, aluno, httpOptions)
+			.pipe(
+				tap(aluno => console.log('')),
+				catchError(this.handleError<Aluno>(''))
+			);
+	}
+
+	deleteAluno(aluno: Aluno | number): Observable<Aluno> {
+		const id = typeof aluno === 'number' ? aluno : aluno.id ;
+		const url = `${this._url}/${id}`;
+		return this._http.delete<Aluno>(url , httpOptions)
+			.pipe(
+				tap(aluno => console.log('')),
+				catchError(this.handleError<Aluno>(''))
+			);
+	}
+
+	searchAluno(str: String): Observable<Aluno[]> {
+		if (!str.trim()) return of([]);
+		return this._http.get<Aluno[]>(this._url)
+			.pipe(
+				tap(Alunos => console.log('Fetched alunos!')),
+				catchError(this.handleError('searchAluno', []))
+			);
 	}
 }
