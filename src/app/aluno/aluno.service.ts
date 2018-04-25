@@ -42,4 +42,7 @@ export class AlunoService {
 			);
 	}
 
+	postAluno(aluno: Aluno){
+		return aluno;
+	}
 }
