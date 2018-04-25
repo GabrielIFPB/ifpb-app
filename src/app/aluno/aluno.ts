@@ -5,13 +5,7 @@ import { Turma } from '../turma/turma';
 import { Turno } from '../turno/turno';
 import { Arquivo } from '../arquivo/arquivo';
 
-export class Aluno implements Pessoa {
-	id: number
-	nome: string
-	keyAuth: string
-	email: string
-	tipo: boolean
-	ativo: boolean
+export interface Aluno extends Pessoa {
 	matricula: string
 	// curso: Curso
 	// periodo: Periodo
