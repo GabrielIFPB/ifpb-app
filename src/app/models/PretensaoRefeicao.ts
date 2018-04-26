@@ -1,4 +1,4 @@
-import { ConfirmaPretensaoDia } from '../confirmapretensaodia/confirmapretensaodia';
+import { ConfirmaPretensaoDia } from './ConfirmaPretensaoDia';
 
 export interface PretensaoRefeicao {
 	id: number

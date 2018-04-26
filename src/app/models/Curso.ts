@@ -1,5 +1,5 @@
-import { Campus } from '../campus/campus';
-import { Nivel } from '../nivel/nivel';
+import { Campus } from './Campus';
+import { Nivel } from './Nivel';
 
 export interface Curso {
 	id: number

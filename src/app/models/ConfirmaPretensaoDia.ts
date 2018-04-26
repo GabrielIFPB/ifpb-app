@@ -1,4 +1,4 @@
-import { DiaRefeicao } from '../diarefeicao/diarefeicao';
+import { DiaRefeicao } from './DiaRefeicao';
 
 export interface ConfirmaPretensaoDia {
 	diaRefeicao: DiaRefeicao

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import 'rxjs/Rx';
-import { Funcionario } from './funcionario';
+import { Funcionario } from '../models/Funcionario';
 
 const httpOptions = {
 	headers: new HttpHeaders({'Content-Type': 'application/json'})

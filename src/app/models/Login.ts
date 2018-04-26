@@ -1,4 +1,4 @@
-import { Pessoa } from '../pessoa/pessoa';
+import { Pessoa } from './Pessoa';
 
 export interface Login {
 	id: number

@@ -1,4 +1,4 @@
-import { Login } from '../login/login';
+import { Login } from './Login';
 
 export interface Logout {
 	id: number
