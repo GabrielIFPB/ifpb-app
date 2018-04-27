@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { AlunoControlList } from './controllers/AlunoControlList';
+import { AlunoService } from './services/aluno.service';
 
 @NgModule({
     declarations: [
@@ -10,9 +13,10 @@ import { AlunoControlList } from './controllers/AlunoControlList';
         AlunoControlList
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        HttpClientModule
     ],
-    providers: [ ],
-    bootstrap: [AppComponent]
+    providers: [ AlunoService ],
+    bootstrap: [ AppComponent ]
 })
 export class AppModule { }

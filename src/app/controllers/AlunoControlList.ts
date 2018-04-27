@@ -4,7 +4,7 @@ import { AlunoService } from '../services/aluno.service';
 
 @Component({
     selector: 'app-list-aluno',
-    templateUrl: '../views/aluno-list.html',
+    templateUrl: '../views/aluno-lista.html',
     styleUrls: ['../css/lista-aluno.css']
 })
 export class AlunoControlList implements OnInit {
@@ -16,7 +16,7 @@ export class AlunoControlList implements OnInit {
     ngOnInit() { }
 
     getAlunos(): void {
-        this._service.getAlunos()
-            .subscribe(result => this._alunos = result);
+        // this._service.getAlunos()
+        //     .subscribe(result => this._alunos = result);
     }
 }
