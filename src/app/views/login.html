@@ -1,3 +1,10 @@
 <p>
     login!
 </p>
+
+<form>
+<input (keyup)="onKey()" placeholder="Usuário">
+<input #box (keyup)="0" type="password" placeholder="Senha">
+<button>logar</button>
+</form>
+<p>{{box.value}}</p>
