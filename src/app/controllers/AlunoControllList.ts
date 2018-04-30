@@ -7,7 +7,7 @@ import { AlunoService } from '../services/aluno.service';
     templateUrl: '../views/aluno-lista.html',
     styleUrls: ['../css/lista-aluno.css']
 })
-export class AlunoControlList implements OnInit {
+export class AlunoControllList implements OnInit {
 
     private _alunos: Aluno[];
 
