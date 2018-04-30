@@ -4,13 +4,13 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { AlunoControlList } from './controllers/AlunoControlList';
+import { AlunoControllList } from './controllers/AlunoControllList';
 import { AlunoService } from './services/aluno.service';
 
 @NgModule({
     declarations: [
         AppComponent,
-        AlunoControlList
+        AlunoControllList
     ],
     imports: [
         BrowserModule,
