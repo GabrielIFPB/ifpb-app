@@ -3,8 +3,9 @@
 </p>
 
 <form>
-<input (keyup)="onKey()" placeholder="Usuário">
-<input #box (keyup)="0" type="password" placeholder="Senha">
-<button>logar</button>
+    <input [(ngModel)]="_username" name="username" placeholder="Usuário">
+    <input [(ngModel)]="_password" name="password" type="password" placeholder="Senha">
+    <button (click)="submit()" >logar</button>
 </form>
-<p>{{box.value}}</p>
+{{ _username }}....
+{{ _password }}
