@@ -7,12 +7,16 @@ import 'rxjs/Rx';
 import { Login } from '../models/Login';
 
 const httpOptions = {
-	headers: new HttpHeaders({'Content-Type': 'application/json'})
+	headers: new HttpHeaders(
+		{
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Methods': 'POST'
+		})
 };
 
 @Injectable()
 export class LoginService {
-    private _url = '';
+    private _url = 'http://localhost:3000/login';
 
     constructor(private _http: HttpClient) { }
 
@@ -24,9 +28,11 @@ export class LoginService {
     }
     
     getLogin(username: string, password: string): Observable<Login> {
-		return this._http.get<Login>(this._url)
+		const url = `${this._url}?username=${username}&password=${password}`;
+		console.log(url);
+		return this._http.get<Login>(url)
 			.pipe(
-				tap(user => console.log('')),
+				tap(login => console.log('login: username && password')),
 				catchError(this.handleError<Login>('getLogin'))
 			);
 	}
