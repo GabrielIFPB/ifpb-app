@@ -9,3 +9,11 @@
 </form>
 {{ _username }}....
 {{ _password }}
+
+<div *ngIf="_username">
+    <p>{{ _username }}</p>
+</div>
+
+<div *ngIf="login">
+    <p>{{ login.username }}</p>
+</div>
