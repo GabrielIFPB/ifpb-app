@@ -16,6 +16,7 @@ export class LoginControll implements OnInit {
     private _username: string = '';
     private _password: string = '';
     private _keyAuth: string = '';
+    private _error: string = '';
 
     constructor(private _service: LoginService, private _router: Router) { }
 
@@ -24,14 +25,18 @@ export class LoginControll implements OnInit {
     submit(): void {
         this._service.getLogin(this._username, this._password)
             .subscribe(
-                result => this.login = result,
+                (result: Login) => this.login = result,
+                error => this._error = error
             );
         if (this.login instanceof Array) {
-            if (this.login.username && this.login.password) {
+            if (this.login[0].username && this.login[0].password) {
                 this._router.navigate(['/']);
             } else {
                 this._router.navigate(['/login']);
             }
+        } else {
+            console.log(this._error);
+            console.log('   --ERROR--   ');
         }
     }
 }

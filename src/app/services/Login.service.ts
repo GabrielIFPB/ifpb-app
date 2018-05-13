@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable , of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import 'rxjs/Rx';
+// import 'rxjs/Rx';
 import { Login } from '../models/Login';
 
 const httpOptions = {
 	headers: new HttpHeaders(
 		{
 			'Content-Type': 'application/json',
-			'Access-Control-Allow-Methods': 'POST'
+			'Authorization': 'my-auth-token'
 		})
 };
 
@@ -30,7 +29,7 @@ export class LoginService {
     getLogin(username: string, password: string): Observable<Login> {
 		const url = `${this._url}?username=${username}&password=${password}`;
 		console.log(url);
-		return this._http.get<Login>(url)
+		return this._http.get<Login>(url, httpOptions)
 			.pipe(
 				tap(login => console.log('login: username && password')),
 				catchError(this.handleError<Login>('getLogin'))
