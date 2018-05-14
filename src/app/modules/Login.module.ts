@@ -5,12 +5,14 @@ import { FormsModule }    from '@angular/forms';
 import { LoginControll } from '../controllers/LoginControll';
 import { LoginService } from '../services/Login.service';
 import { LoginRoutingModule } from '../routes/login-routing.module';
+import { MaterialLoginModule } from '../material/Material.login';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
-		LoginRoutingModule
+		LoginRoutingModule,
+		MaterialLoginModule
 	],
 	declarations: [
 		LoginControll
