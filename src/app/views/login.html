@@ -1,19 +1,22 @@
-<p>
-    login!
-</p>
-
-<form>
-    <input [(ngModel)]="_username" name="username" placeholder="Usuário">
-    <input [(ngModel)]="_password" name="password" type="password" placeholder="Senha">
-    <button (click)="submit()" >logar</button>
-</form>
+<div class="container">
+	<h1>Login</h1>
+	<form (ngSubmit)="onSubmit()" #LoginForm="ngForm">
+		<div class="">
+			<mat-form-field class="full-width">
+				<input matInput [(ngModel)]="_username" name="username" placeholder="Usuário">
+			</mat-form-field>
+		</div>
+		<div class="">
+			<mat-form-field class="full-width">
+				<input matInput [(ngModel)]="_password" name="password" type="password" placeholder="Senha">
+			</mat-form-field>
+		</div>
+		<button mat-button (click)="submit()" >logar</button>
+	</form>
+</div>
 {{ _username }}....
 {{ _password }}
 
 <div *ngIf="_username">
-    <p>{{ _username }}</p>
-</div>
-
-<div *ngIf="login">
-    <p>{{ login.username }}</p>
+	<p>{{ _username }}</p>
 </div>

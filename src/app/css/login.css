@@ -1,0 +1,11 @@
+.container{
+	border: 1px solid #CCC;
+	width: 400px;
+	padding: 12px;
+	box-shadow: 2px 2px 5px #666;
+	margin: 0 50% 0 35%;
+}
+
+.full-width{
+	width: 100%;
+}
