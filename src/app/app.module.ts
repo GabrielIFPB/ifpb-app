@@ -15,6 +15,8 @@ import { AppRouting } from './routes/app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MaterialAppModule } from './material.app.module';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -27,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         HttpClientModule,
         LoginModule,
         AppRouting,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MaterialAppModule
     ],
     providers: [ AlunoService ],
     bootstrap: [ AppComponent ]

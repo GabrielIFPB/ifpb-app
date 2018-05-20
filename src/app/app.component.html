@@ -1,5 +1,13 @@
-
-<a routerLink="/" >home</a><div></div>
-<a routerLink="/login" >login</a>
+<mat-toolbar color="primary">
+	<mat-toolbar-row>
+		<button mat-button routerLink="/home"><span>IFPB</span></button>
+		<span class="example-spacer"></span>
+		<button mat-button>About</button>
+		<button mat-button>Services</button>
+		<button mat-button>Contact</button>
+		<button mat-button routerLink="/login">Login</button>
+		<button mat-button routerLink="/setting">Setting</button>
+	</mat-toolbar-row>
+</mat-toolbar>
 
 <router-outlet></router-outlet>
