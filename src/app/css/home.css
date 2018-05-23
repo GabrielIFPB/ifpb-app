@@ -8,7 +8,7 @@
 }
 
 .container {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(0, 0, 0); */
 }
 
 .sidenav-content {
@@ -16,11 +16,21 @@
   height: 1400px;
   align-items: flex-start;
   justify-content: flex-start;
+  /* position: absolute; */
+  /* margin-top: 300px; */
+  z-index: 80;
 }
+.mat-drawer{
+  z-index: 80;
+}
+.mat-drawer-side{
 
+}
 .sidenav {
+  position: absolute;
   padding: 20px;
   height: 100%;
+  z-index: 99;
   background-color: #b2bec3;
 }
 
