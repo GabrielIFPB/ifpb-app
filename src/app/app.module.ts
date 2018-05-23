@@ -11,6 +11,8 @@ import { LoginModule } from './modules/Login.module';
 import { AlunoControllList } from './controllers/AlunoControllList';
 import { AlunoService } from './services/Aluno.service';
 
+import { PanelModule } from './modules/Panel.module';
+
 import { AppRouting } from './routes/app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +30,7 @@ import { MaterialAppModule } from './material.app.module';
         FormsModule,
         HttpClientModule,
         LoginModule,
+        PanelModule,
         AppRouting,
         BrowserAnimationsModule,
         MaterialAppModule
