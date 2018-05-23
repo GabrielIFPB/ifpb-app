@@ -5,14 +5,14 @@ import { FormsModule }    from '@angular/forms';
 import { PanelControll } from '../controllers/PanelControll';
 // import { LoginService } from '../services/Login.service';
 import { PanelRoutingModule } from '../routes/panel-routing.module';
-// import { MaterialLoginModule } from '../material/Material.login';
+import { MaterialPanelModule } from '../material/Material.panel';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
 		PanelRoutingModule,
-		// MaterialLoginModule
+		MaterialPanelModule
 	],
 	declarations: [
 		PanelControll

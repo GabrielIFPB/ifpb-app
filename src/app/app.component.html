@@ -5,7 +5,7 @@
 		<button mat-button>About</button>
 		<button mat-button>Services</button>
 		<button mat-button>Contact</button>
-		<button mat-button routerLink="/login">Login</button>
+		<button *ngIf="!login" mat-button routerLink="/login">Login</button>
 		<button mat-button routerLink="/panel">Setting</button>
 	</mat-toolbar-row>
 </mat-toolbar>
