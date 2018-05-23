@@ -7,8 +7,24 @@
 	background-size: cover;
 }
 
-.example-container {
-	width: 500px;
-	height: 300px;
-	/* border: 1px solid rgba(0, 0, 0, 0.5); */
+.container {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.sidenav-content {
+  display: flex;
+  height: 1400px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidenav {
+  padding: 20px;
+  height: 100%;
+  background-color: #b2bec3;
+}
+
+.button-side{
+	width: 100%;
+	margin: 0 0 10px 0;
 }

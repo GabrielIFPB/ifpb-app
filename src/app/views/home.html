@@ -1,13 +1,34 @@
-
-<mat-drawer-container autosize>
-	<!-- conteudo do sidenav -->
-	<mat-drawer #drawer mode="side" class="drawer">
-		<p>Auto-resizing sidenav</p>
+<mat-drawer-container class="container" autosize>
+	<mat-drawer #drawer class="sidenav" mode="side">
+		<button class="button-side" (click)="showFiller = !showFiller" mat-raised-button>
+			Toggle extra text
+		</button>
+		<br>
+		<button class="button-side" (click)="showFiller = !showFiller" mat-raised-button>
+			Toggle extra text
+		</button>
+		<br>
+		<button class="button-side" (click)="showFiller = !showFiller" mat-raised-button>
+			Toggle extra text
+		</button>
+		<br>
+		<button class="button-side" (click)="showFiller = !showFiller" mat-raised-button>
+			Toggle extra text
+		</button>
+		<br>
+		<button class="button-side" (click)="showFiller = !showFiller" mat-raised-button>
+			Toggle extra text
+		</button>
+		<br>
+		<button class="button-side" (click)="showFiller = !showFiller" mat-raised-button>
+			Toggle extra text
+		</button>
 	</mat-drawer>
 
-	<!-- conteudo do site -->
-	<button type="button" mat-button (click)="drawer.toggle()">
-		Toggle sidenav
-	</button>
+	<div class="sidenav-content">
+		<button type="button" mat-button (click)="drawer.toggle()">
+			Home
+		</button>
+	</div>
 </mat-drawer-container>
 	
