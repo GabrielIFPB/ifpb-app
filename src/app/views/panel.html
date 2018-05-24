@@ -1,53 +1,17 @@
-<mat-sidenav-container class="container" >
-    <mat-sidenav mode="side" opened>
-        Sidenav content
-        fadsfa
-        fads
-        fad
-        sf
-        ads
-        fa
-        dsf
-        ad
-        sf
-        <a href="sf
-        a"></a>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <mat-list>
-            <h3 mat-subheader>Folders</h3>
-            <mat-list-item *ngFor="let folder of folders">
-                <h4 mat-line>{{folder.name}}</h4>
-                <p mat-line> {{folder.updated | date}} </p>
-            </mat-list-item>
-            <h3 mat-subheader>Notes</h3>
-            <mat-list-item *ngFor="let note of notes">
-                <h4 mat-line>{{note.name}}</h4>
-                <p mat-line> {{note.updated | date}} </p>
-            </mat-list-item>
-        </mat-list>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<ul id="slide-out" class="sidenav">
+	<li>
+		<div class="user-view">
+			<div class="background">
 
-drfasdfasd
-fads
-fasdfadsfadsfas
-sdfadsfadsfa
-dsfasdfasdf
-asdfasdfasd
-fadfaf
-<mat-list>
-        <h3 mat-subheader>Folders</h3>
-        <mat-list-item *ngFor="let folder of folders">
-            <h4 mat-line>{{folder.name}}</h4>
-            <p mat-line> {{folder.updated | date}} </p>
-        </mat-list-item>
-        <h3 mat-subheader>Notes</h3>
-        <mat-list-item *ngFor="let note of notes">
-            <h4 mat-line>{{note.name}}</h4>
-            <p mat-line> {{note.updated | date}} </p>
-        </mat-list-item>
-    </mat-list>
-      
-
-      
+			</div>
+			<a href="#name"><span class="white-text name">John Doe</span></a>
+			<a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+   		</div>
+	</li>
+   	<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+   	<li><a href="#!">Second Link</a></li>
+   	<li><div class="divider"></div></li>
+   	<li><a class="subheader">Subheader</a></li>
+   	<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+ </ul>
+ <button data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></button>
