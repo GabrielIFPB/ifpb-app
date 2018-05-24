@@ -7,9 +7,9 @@
 	background-size: cover;
 }
 
-.container {
-  /* border: 1px solid rgb(0, 0, 0); */
-}
+/* .container {
+  border: 1px solid rgb(0, 0, 0);
+} */
 
 .sidenav-content {
   display: flex;
@@ -20,12 +20,12 @@
   /* margin-top: 300px; */
   z-index: 80;
 }
-.mat-drawer{
+/* .mat-drawer{
   z-index: 80;
 }
 .mat-drawer-side{
 
-}
+} */
 .sidenav {
   position: absolute;
   padding: 20px;
