@@ -23,8 +23,12 @@
     "@angular/platform-browser": "6.0.1",
     "@angular/platform-browser-dynamic": "6.0.1",
     "@angular/router": "6.0.1",
+    "boom": "^7.2.0",
     "core-js": "^2.4.1",
+    "hawk": "^7.0.7",
+    "hoek": "^5.0.3",
     "rxjs": "^6.1.0",
+    "sntp": "^3.0.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
