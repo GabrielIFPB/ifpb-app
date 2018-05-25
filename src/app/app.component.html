@@ -5,8 +5,7 @@
 		<button mat-button>About</button>
 		<button mat-button>Services</button>
 		<button mat-button>Contact</button>
-		<button *ngIf="!login" mat-button routerLink="/login">Login</button>
-		<button mat-button routerLink="/panel">Setting</button>
+		<button *ngIf="!login" mat-button routerLink="/login"><mat-icon aria-label="Side nav toggle icon">account_circle</mat-icon>Login</button>
 	</mat-toolbar-row>
 </mat-toolbar>
 
