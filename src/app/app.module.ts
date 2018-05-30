@@ -7,17 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { Home } from './controllers/HomeControll';
 import { LoginModule } from './modules/Login.module';
-
-import { AlunoControllList } from './controllers/AlunoControllList';
-import { AlunoService } from './services/Aluno.service';
-
+import { AlunoModule } from './modules/Aluno.module';
 import { PanelModule } from './modules/Panel.module';
-
 import { AppRouting } from './routes/app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialAppModule } from './material.app.module';
+
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
@@ -26,18 +23,20 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     declarations: [
         AppComponent,
         Home,
-        AlunoControllList,
+        // AlunoControllList,
         MainNavComponent,
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule,
+        AlunoModule,
         LoginModule,
         PanelModule,
         AppRouting,
         BrowserAnimationsModule,
         MaterialAppModule,
+
         LayoutModule,
         MatToolbarModule,
         MatButtonModule,
@@ -45,7 +44,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
         MatIconModule,
         MatListModule
     ],
-    providers: [ AlunoService ],
+    providers: [  ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }
