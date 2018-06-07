@@ -9,6 +9,8 @@ import { Home } from './controllers/HomeControll';
 import { LoginModule } from './modules/Login.module';
 import { AlunoModule } from './modules/Aluno.module';
 import { PanelModule } from './modules/Panel.module';
+import { MainNavModule } from './main-nav/main-nav.module';
+
 import { AppRouting } from './routes/app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,6 +39,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
         BrowserAnimationsModule,
         MaterialAppModule,
 
+        // MainNavModule,
         LayoutModule,
         MatToolbarModule,
         MatButtonModule,

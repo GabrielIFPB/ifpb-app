@@ -1,6 +1,6 @@
-.example-card {
+/* .example-card {
 	max-width: 400px;
-}
+} */
   
 .example-header-image {
 	background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -11,30 +11,30 @@
   border: 1px solid rgb(0, 0, 0);
 } */
 
-.sidenav-content {
+/* .sidenav-content {
   display: flex;
   height: 1400px;
   align-items: flex-start;
   justify-content: flex-start;
-  /* position: absolute; */
-  /* margin-top: 300px; */
+  position: absolute;
+  margin-top: 300px;
   z-index: 80;
-}
+} */
 /* .mat-drawer{
   z-index: 80;
 }
 .mat-drawer-side{
 
 } */
-.sidenav {
+/* .sidenav {
   position: absolute;
   padding: 20px;
   height: 100%;
   z-index: 99;
   background-color: #b2bec3;
-}
+} */
 
-.button-side{
+/* .button-side{
 	width: 100%;
 	margin: 0 0 10px 0;
-}
+} */
