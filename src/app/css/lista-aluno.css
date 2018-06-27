@@ -1,8 +1,25 @@
 table {
-	width: 80%;
+	width: 100%;
+}
+
+td, th {
+	width: 25%;
 }
   
 .mat-form-field {
 	font-size: 14px;
+	width: 100%;
+}
+
+mat-card{
+	margin: 23px 0 20px 110px;
 	width: 80%;
+	padding: 26px 15px 36px 15px;
+	transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    display: block;
+    position: relative;
+}
+
+mat-icon{
+	margin-right: 50px;
 }
