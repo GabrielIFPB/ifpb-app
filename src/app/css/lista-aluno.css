@@ -11,6 +11,10 @@ td, th {
 	width: 100%;
 }
 
+a{
+	display: inline-block;
+}
+
 mat-card{
 	margin: 23px 0 20px 110px;
 	width: 80%;
@@ -21,5 +25,6 @@ mat-card{
 }
 
 mat-icon{
-	margin-right: 50px;
+	width: 50px;
+	margin-right: 25px;
 }
