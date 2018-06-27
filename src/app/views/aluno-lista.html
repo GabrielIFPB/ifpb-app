@@ -1,39 +1,49 @@
-<p>
-    aluno!
-</p>
+<mat-card>
+	<mat-form-field>
+		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+	</mat-form-field>
+	<div class="mat-elevation-z8">
+		<table mat-table [dataSource]="dataSource" matSort >
+			<!-- ID Column -->
+			<ng-container matColumnDef="id">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+				<td mat-cell *matCellDef="let row"> {{row.id}} </td>
+			</ng-container>
+		
+			<!-- Progress Column -->
+			<ng-container matColumnDef="progress">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
+				<td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+			</ng-container>
+		
+			<!-- Name Column -->
+			<ng-container matColumnDef="name">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+				<td mat-cell *matCellDef="let row"> {{row.name}} </td>
+			</ng-container>
+		
+			<!-- Color Column -->
+			<ng-container matColumnDef="color">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
+				<td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
+			</ng-container>
 
-<mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-  </mat-form-field>
-  
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
-  
+			<!-- Edit Column -->
+			<ng-container matColumnDef="edit">
+				<th mat-header-cell *matHeaderCellDef > Edit </th>
+				<td mat-cell *matCellDef="let row"><a routerLink="."><mat-icon>edit</mat-icon></a></td>
+			</ng-container>
+
+			<!-- Delete Column -->
+			<ng-container matColumnDef="delete">
+				<th mat-header-cell *matHeaderCellDef > Delete </th>
+				<td mat-cell *matCellDef="let row"><a routerLink="."><mat-icon>delete</mat-icon></a></td>
+			</ng-container>
+		
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns;">
+			</tr>
+		</table>
+		<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+	</div>
+</mat-card>
