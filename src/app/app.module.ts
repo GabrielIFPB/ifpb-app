@@ -10,6 +10,7 @@ import { Home } from './controllers/HomeControll';
 import { LoginModule } from './modules/Login.module';
 import { AlunoModule } from './modules/Aluno.module';
 import { PanelModule } from './modules/Panel.module';
+import { EditalModule } from './edital/edital.module';
 
 import { AppRouting } from './routes/app-routing.module';
 
@@ -27,6 +28,7 @@ import { MaterialAppModule } from './material.app.module';
         AlunoModule,
         LoginModule,
         PanelModule,
+        EditalModule,
         AppRouting,
         BrowserAnimationsModule,
         MaterialAppModule,

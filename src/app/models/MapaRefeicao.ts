@@ -1,6 +1,6 @@
 import { Refeicao } from './Refeicao';
 import { Dia } from './Dia';
-import { Edital } from './Edital';
+import { Edital } from '../edital/edital';
 import { Aluno } from './Aluno';
 
 export interface MapaRefeicao {
