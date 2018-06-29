@@ -9,5 +9,5 @@ export interface Arquivo {
 	data: string
 	tipoArquivo: number
 	ativo: boolean
-	file: {}
+	file: any
 }
