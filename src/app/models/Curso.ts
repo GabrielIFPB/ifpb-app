@@ -1,4 +1,4 @@
-import { Campus } from './Campus';
+import { Campus } from '../campus/Campus';
 import { Nivel } from './Nivel';
 
 export interface Curso {
