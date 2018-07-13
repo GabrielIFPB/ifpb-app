@@ -46,7 +46,7 @@ export class EditalComponent implements OnInit {
 			console.log('The dialog was closed');
 		//   this.animal = result;
 		});
-	  }
+	}
 }
 
 /** Constants used to fill up our data base. */
@@ -83,7 +83,7 @@ export interface UserData {
 
 @Component({
 	selector: 'app-dialog',
-	templateUrl: './model.component.html',
+	templateUrl: './modal.component.html',
 })
 export class DialogOverviewExampleDialog {
 
