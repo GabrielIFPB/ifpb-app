@@ -1,4 +1,4 @@
-import { Campus } from './Campus';
+import { Campus } from '../campus/Campus';
 
 export interface Pessoa {
 	id: number

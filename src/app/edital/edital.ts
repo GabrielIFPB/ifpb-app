@@ -1,4 +1,4 @@
-import { Campus } from '../models/Campus';
+import { Campus } from '../campus/Campus';
 import { Evento } from '../models/Evento';
 import { Funcionario } from '../models/Funcionario';
 
