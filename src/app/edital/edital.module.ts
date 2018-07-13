@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { EditalComponent, DialogOverviewExampleDialog } from './edital.component';
 import { EditalRoutingModule } from './edital-routing.module';
 import { MaterialEditalModule } from './edital.material.module';
-import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
 	imports: [
@@ -14,7 +13,7 @@ import { ModalComponent } from './modal/modal.component';
         EditalRoutingModule,
 		MaterialEditalModule
 	],
-	declarations: [ EditalComponent, ModalComponent, DialogOverviewExampleDialog ],
+	declarations: [ EditalComponent, DialogOverviewExampleDialog ],
 	entryComponents: [ DialogOverviewExampleDialog ],
 	providers: [ ]
 })

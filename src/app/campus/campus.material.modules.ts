@@ -19,4 +19,4 @@ import { MatButtonModule } from '@angular/material/button';
 				MatDialogModule, MatButtonModule
 	]
 })
-export class MaterialEditalModule { }
+export class MaterialCampusModule { }
