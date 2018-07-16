@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Campus } from './Campus';
+import { CampusService } from './campus.service';
 
 @Component({
 	selector: 'app-campus',
@@ -18,7 +19,7 @@ export class CampusComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
-	constructor(private dialog: MatDialog) {
+	constructor(private service: CampusService, private dialog: MatDialog) {
 		// Create 100 users
 		const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 		// Assign the data to the data source for the table to render
@@ -94,11 +95,21 @@ export class ModalComponent {
 	private _sigla: string = '';
 	private _campus: Campus;
 
-	constructor(public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: UserData) { }
+	constructor(private _service: CampusService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: UserData) { }
 
-	save(): boolean {
-		
-		return null;
+	save(): void {
+		console.log(this._cidade);
+		console.log(this._sigla);
+		console.log(this._ativo);
+		this._campus = {
+			id: -1,
+			sigla: this._sigla,
+			cidade: this._cidade,
+			dataInsercao: new Date(),
+			ativo: this._ativo
+		};
+		this._service.add(this._campus);
+		// return null;
 	}
 
 	close(): void {
