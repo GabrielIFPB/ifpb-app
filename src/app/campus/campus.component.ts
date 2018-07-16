@@ -28,6 +28,7 @@ export class CampusComponent implements OnInit {
 	ngOnInit() {
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
+		console.log(new Date());
 	}
 
 	applyFilter(filterValue: string) {
@@ -36,9 +37,9 @@ export class CampusComponent implements OnInit {
 	}
 
 	openDialog(): void {
-		let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+		let dialogRef = this.dialog.open(ModalComponent, {
 			width: '400px',
-			height: '400px',
+			height: '320px',
 			data: {}
 		});
 
@@ -47,7 +48,6 @@ export class CampusComponent implements OnInit {
 		//   this.animal = result;
 		});
 	}
-
 }
 
 /** Constants used to fill up our data base. */
@@ -85,14 +85,23 @@ export interface UserData {
 @Component({
 	selector: 'app-dialog',
 	templateUrl: './modal.component.html',
+	styleUrls: ['./modal.component.css']
 })
-export class DialogOverviewExampleDialog {
+export class ModalComponent {
 
-	constructor(
-		public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-		@Inject(MAT_DIALOG_DATA) public data: UserData) {}
+	private _ativo: boolean = null;
+	private _cidade: string = '';
+	private _sigla: string = '';
+	private _campus: Campus;
 
-	onNoClick(): void {
+	constructor(public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: UserData) { }
+
+	save(): boolean {
+		
+		return null;
+	}
+
+	close(): void {
 		this.dialogRef.close();
 	}
 }

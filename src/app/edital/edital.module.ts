@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { EditalComponent, DialogOverviewExampleDialog } from './edital.component';
+import { EditalComponent, ModalComponent } from './edital.component';
 import { EditalRoutingModule } from './edital-routing.module';
 import { MaterialEditalModule } from './edital.material.module';
 
@@ -13,8 +13,8 @@ import { MaterialEditalModule } from './edital.material.module';
         EditalRoutingModule,
 		MaterialEditalModule
 	],
-	declarations: [ EditalComponent, DialogOverviewExampleDialog ],
-	entryComponents: [ DialogOverviewExampleDialog ],
+	declarations: [ EditalComponent, ModalComponent ],
+	entryComponents: [ ModalComponent ],
 	providers: [ ]
 })
 export class EditalModule {}

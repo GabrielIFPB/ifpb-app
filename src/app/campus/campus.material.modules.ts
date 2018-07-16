@@ -8,15 +8,16 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
 	imports: [ MatTableModule, MatInputModule, MatCardModule,
 				MatIconModule, MatPaginatorModule, MatTooltipModule,
-				MatDialogModule, MatButtonModule
+				MatDialogModule, MatButtonModule, MatRadioModule
 	],
 	exports: [ MatTableModule, MatInputModule, MatCardModule,
 				MatIconModule, MatPaginatorModule, MatTooltipModule,
-				MatDialogModule, MatButtonModule
+				MatDialogModule, MatButtonModule, MatRadioModule
 	]
 })
 export class MaterialCampusModule { }
