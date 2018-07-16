@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { CampusComponent, DialogOverviewExampleDialog } from './campus.component';
+import { CampusComponent, ModalComponent } from './campus.component';
 import { CampusRoutingModule } from './campus-routing.module';
 import { MaterialCampusModule } from './campus.material.modules';
+import { CampusService } from './campus.service';
 
 @NgModule({
 	imports: [
@@ -13,8 +14,8 @@ import { MaterialCampusModule } from './campus.material.modules';
 		CampusRoutingModule,
 		MaterialCampusModule
 	],
-	declarations: [ CampusComponent, DialogOverviewExampleDialog ],
-	entryComponents: [ DialogOverviewExampleDialog ],
-	providers: [ ]
+	declarations: [ CampusComponent, ModalComponent ],
+	entryComponents: [ ModalComponent ],
+	providers: [ CampusService ]
 })
 export class CampusModule { }

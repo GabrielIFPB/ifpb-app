@@ -36,7 +36,7 @@ export class EditalComponent implements OnInit {
 	}
 
 	openDialog(): void {
-		let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+		let dialogRef = this.dialog.open(ModalComponent, {
 			width: '400px',
 			height: '400px',
 			data: {}
@@ -85,10 +85,10 @@ export interface UserData {
 	selector: 'app-dialog',
 	templateUrl: './modal.component.html',
 })
-export class DialogOverviewExampleDialog {
+export class ModalComponent {
 
 	constructor(
-		public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+		public dialogRef: MatDialogRef<ModalComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: UserData) {}
 
 	onNoClick(): void {
