@@ -27,11 +27,10 @@ export class LoginControll implements OnInit {
                 error => this._error = error
             );
         if (this.login instanceof Array) {
-            if (this.login[0].username && this.login[0].password) {
+            if (this.login[0].username && this.login[0].password)
                 this._router.navigate(['/']);
-            } else {
+            else
                 this._router.navigate(['/login']);
-            }
         } else {
             console.log(this._error);
             console.log('   --ERROR--   ');

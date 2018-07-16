@@ -7,22 +7,22 @@
 	<mat-card-content>
 		<section>
 			<mat-form-field>
-				<input matInput placeholder="Cidade">
+				<input matInput placeholder="Cidade" [(ngModel)]="_cidade">
 			</mat-form-field>
 			<br>
 			<mat-form-field>
-				<input matInput placeholder="Sigla">
+				<input matInput placeholder="Sigla" [(ngModel)]="_sigla">
 			</mat-form-field>
 			<br>
 			<label>Atvio: </label>
-			<mat-radio-group>
-				<mat-radio-button value="true">Sim</mat-radio-button>
+			<mat-radio-group [(ngModel)]="_ativo">
+				<mat-radio-button value="true" id="sim">Sim</mat-radio-button>
 				<mat-radio-button value="false">Não</mat-radio-button>
 			</mat-radio-group>
 		</section>
 	</mat-card-content>
 	<mat-card-actions>
 		<button mat-button (click)="close()">CLOSE</button>
-		<button mat-button>SHARE</button>
+		<button mat-button (click)='save()'>SAVE</button>
 	</mat-card-actions>
 </mat-card>
