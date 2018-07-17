@@ -12,7 +12,7 @@ const httpOptions = {
 @Injectable()
 export class CampusService {
 
-	private _url = '';
+	private _url = 'http://localhost:3000/campus';
 
 	private handleError<T>(operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {

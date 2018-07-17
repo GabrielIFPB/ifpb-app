@@ -29,7 +29,6 @@ export class CampusComponent implements OnInit {
 	ngOnInit() {
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
-		console.log(new Date());
 	}
 
 	applyFilter(filterValue: string) {
@@ -98,17 +97,14 @@ export class ModalComponent {
 	constructor(private _service: CampusService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: UserData) { }
 
 	save(): void {
-		console.log(this._cidade);
-		console.log(this._sigla);
-		console.log(this._ativo);
-		this._campus = {
-			id: -1,
+		let campus = {
+			id: null,
 			sigla: this._sigla,
 			cidade: this._cidade,
-			dataInsercao: new Date(),
+			dataInsercao: null,
 			ativo: this._ativo
 		};
-		this._service.add(this._campus);
+		this._service.add(campus).subscribe(result => this._campus = result);
 		// return null;
 	}
 
