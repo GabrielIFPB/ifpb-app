@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { Campus } from './Campus';
 import { CampusService } from './campus.service';
+import { Campus } from './Campus';
 
 @Component({
 	selector: 'app-campus',
@@ -13,20 +13,22 @@ export class CampusComponent implements OnInit {
 
 	private _campus: Campus[];
 
-	displayedColumns: string[] = ['id', 'name', 'progress', 'color', 'edit', 'delete'];
-  	dataSource: MatTableDataSource<UserData>;
+	displayedColumns: string[] = ['id', 'sigla', 'cidade', 'data', 'ativo', 'edit', 'delete'];
+  	dataSource: MatTableDataSource<Campus>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
-	constructor(private service: CampusService, private dialog: MatDialog) {
+	constructor(private _service: CampusService, private dialog: MatDialog) {
+		this.getCampus();
 		// Create 100 users
-		const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+		// const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 		// Assign the data to the data source for the table to render
-		this.dataSource = new MatTableDataSource(users);
+		this.dataSource = new MatTableDataSource(this._campus);
 	}
 
 	ngOnInit() {
+		this.getCampus();
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
 	}
@@ -48,38 +50,14 @@ export class CampusComponent implements OnInit {
 		//   this.animal = result;
 		});
 	}
-}
 
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-	'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-	'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-	'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-	'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-	'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
+	private getCampus(): void {
+		this._service.getCampus()
+			.subscribe(result => this._campus = result);
+			console.log( this._campus );
+	}
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-	const name =
-		NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-		NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-  
-	return {
-		id: id.toString(),
-		name: name,
-		progress: Math.round(Math.random() * 100).toString(),
-		color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-	};
-}
-
-export interface UserData {
-	id: string;
-	name: string;
-	progress: string;
-	color: string;
+	delete(): void { }
 }
 
 @Component({
@@ -93,8 +71,9 @@ export class ModalComponent {
 	private _cidade: string = '';
 	private _sigla: string = '';
 	private _campus: Campus;
+	private _error: string = '';
 
-	constructor(private _service: CampusService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: UserData) { }
+	constructor(private _service: CampusService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Campus) { }
 
 	save(): void {
 		let campus = {
@@ -104,7 +83,13 @@ export class ModalComponent {
 			dataInsercao: null,
 			ativo: this._ativo
 		};
-		this._service.add(campus).subscribe(result => this._campus = result);
+		let ax = this._service.add(campus)
+			.subscribe(
+				result => this._campus = result,
+				error => this._error = error
+			);
+		console.log(this._campus);
+		console.log(ax);
 		// return null;
 	}
 
