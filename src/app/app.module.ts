@@ -12,15 +12,15 @@ import { AlunoModule } from './modules/Aluno.module';
 import { PanelModule } from './modules/Panel.module';
 import { EditalModule } from './edital/edital.module';
 import { CampusModule } from './campus/campus.module';
+import { CursoModule } from './curso/curso.module';
 
 import { AppRouting } from './routes/app-routing.module';
-
 import { MaterialAppModule } from './material.app.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        Home,
+        Home
     ],
     imports: [
         BrowserModule,
@@ -31,9 +31,10 @@ import { MaterialAppModule } from './material.app.module';
         PanelModule,
         EditalModule,
         CampusModule,
+        CursoModule,
         AppRouting,
         BrowserAnimationsModule,
-        MaterialAppModule,
+        MaterialAppModule
     ],
     providers: [  ],
     bootstrap: [ AppComponent ]
