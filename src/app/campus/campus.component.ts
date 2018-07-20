@@ -21,16 +21,16 @@ export class CampusComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
-	constructor(private _service: CampusService, private dialog: MatDialog) { }
-
-	rowClicked(row: any): void { console.log(row); }
-
-	ngOnInit() { 
+	constructor(private _service: CampusService, private dialog: MatDialog) {
 		this.dataSource = new MatTableDataSource(this._campus);
 		this._service.getCampus().subscribe(result => this.dataSource.data = result);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
 	}
+
+	rowClicked(row: any): void { console.log(row); }
+
+	ngOnInit() { }
 
 	applyFilter(filterValue: string) {
 		this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -73,11 +73,11 @@ export class ModalComponent {
 			dataInsercao: null,
 			ativo: this._ativo
 		};
-		let ax = this._service.add(campus)
-			.subscribe(
-				result => this._campus = result,
-				error => this._error = error
-			);
+		if (this._sigla && this._cidade && this._ativo) {
+			this._service.add(campus).subscribe(result => this._campus = result, error => this._error = error);
+		} else {
+
+		}
 	}
 
 	close(): void {
