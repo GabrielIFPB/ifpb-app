@@ -2,7 +2,7 @@
 	<mat-card-header>
 		<div mat-card-avatar><mat-icon>assignment</mat-icon></div>
 		<mat-card-title class="title">CAMPUS</mat-card-title>
-		<mat-card-subtitle>Publicos {{ _campus }}</mat-card-subtitle>
+		<mat-card-subtitle>Publicos</mat-card-subtitle>
 	</mat-card-header>
 	<mat-card-content>
 		<mat-form-field>
@@ -43,21 +43,32 @@
 
 				<!-- Edit Column -->
 				<ng-container matColumnDef="edit">
-					<th mat-header-cell *matHeaderCellDef > Edit </th>
+					<th mat-header-cell *matHeaderCellDef > Editar </th>
 					<td mat-cell *matCellDef="let row"><a routerLink="." matTooltip="Editar"><mat-icon>edit</mat-icon></a></td>
-				</ng-container>
-
-				<!-- Delete Column -->
-				<ng-container matColumnDef="delete">
-					<th mat-header-cell *matHeaderCellDef > Delete </th>
-					<td mat-cell *matCellDef="let row"><a routerLink="." matTooltip="Deletar"><mat-icon>delete</mat-icon></a></td>
 				</ng-container>
 			
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-				<tr mat-row *matRowDef="let row; columns: displayedColumns;">
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)">
 				</tr>
 			</table>
 			<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 		</div>
 	</mat-card-content>
 </mat-card>
+
+<!-- <table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>sigla</th>
+			<th>cidade</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let campus of _campus">
+			<td>{{ campus.id }}</td>
+			<td>{{ campus.sigla }}</td>
+			<td>{{ campus.cidade }}</td>
+		</tr>
+	</tbody>
+</table> -->
