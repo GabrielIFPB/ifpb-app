@@ -13,28 +13,40 @@ export class CampusComponent implements OnInit {
 
 	private _campus: Campus[];
 
-	displayedColumns: string[] = ['id', 'sigla', 'cidade', 'data', 'ativo', 'edit', 'delete'];
+	private is_set: boolean = false;
+
+	displayedColumns: string[] = ['id', 'sigla', 'cidade', 'data', 'ativo', 'edit'];
   	dataSource: MatTableDataSource<Campus>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
 	constructor(private _service: CampusService, private dialog: MatDialog) {
-		this.getCampus();
-		// Create 100 users
-		// const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-		// Assign the data to the data source for the table to render
-		this.dataSource = new MatTableDataSource(this._campus);
+		this.getCampusInit();
+		console.log(this._campus);
+	}
+
+	rowClicked(row: any): void {
+		console.log(row);
 	}
 
 	ngOnInit() {
-		this.getCampus();
-		this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
+		this.dataSource = new MatTableDataSource(this._campus);
+		this.dataSource.connect();
 	}
 
 	applyFilter(filterValue: string) {
+		// Capturar o texto digitado pelo usuário.
 		this.dataSource.filter = filterValue.trim().toLowerCase();
+		// Consultar no serviço os campi.
+		if (!this.is_set) {
+			// this.getCampusInit();
+			this.dataSource = new MatTableDataSource(this._campus);
+			this.dataSource.connect();
+			this.dataSource.paginator = this.paginator;
+			this.dataSource.sort = this.sort;
+			this.is_set = true;
+		}
 		if (this.dataSource.paginator) { this.dataSource.paginator.firstPage(); }
 	}
 
@@ -47,14 +59,16 @@ export class CampusComponent implements OnInit {
 
 		dialogRef.afterClosed().subscribe(result => {
 			console.log('The dialog was closed');
-		//   this.animal = result;
 		});
 	}
 
-	private getCampus(): void {
-		this._service.getCampus()
-			.subscribe(result => this._campus = result);
-			console.log( this._campus );
+	private getCampusInit(): void {
+		this._service.getCampusInit().subscribe(result => this._campus = result);
+	}
+
+	private getCampus(cidade: String): void {
+		console.log(cidade)
+		this._service.getCampus(cidade).subscribe(result => this._campus = result);
 	}
 
 	delete(): void { }
@@ -88,9 +102,6 @@ export class ModalComponent {
 				result => this._campus = result,
 				error => this._error = error
 			);
-		console.log(this._campus);
-		console.log(ax);
-		// return null;
 	}
 
 	close(): void {
