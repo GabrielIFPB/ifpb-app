@@ -21,32 +21,19 @@ export class CampusComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
-	constructor(private _service: CampusService, private dialog: MatDialog) {
-		this.getCampusInit();
-		console.log(this._campus);
-	}
+	constructor(private _service: CampusService, private dialog: MatDialog) { }
 
-	rowClicked(row: any): void {
-		console.log(row);
-	}
+	rowClicked(row: any): void { console.log(row); }
 
-	ngOnInit() {
+	ngOnInit() { 
 		this.dataSource = new MatTableDataSource(this._campus);
-		this.dataSource.connect();
+		this._service.getCampus().subscribe(result => this.dataSource.data = result);
+		this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
 	}
 
 	applyFilter(filterValue: string) {
-		// Capturar o texto digitado pelo usuário.
 		this.dataSource.filter = filterValue.trim().toLowerCase();
-		// Consultar no serviço os campi.
-		if (!this.is_set) {
-			// this.getCampusInit();
-			this.dataSource = new MatTableDataSource(this._campus);
-			this.dataSource.connect();
-			this.dataSource.paginator = this.paginator;
-			this.dataSource.sort = this.sort;
-			this.is_set = true;
-		}
 		if (this.dataSource.paginator) { this.dataSource.paginator.firstPage(); }
 	}
 
@@ -61,17 +48,6 @@ export class CampusComponent implements OnInit {
 			console.log('The dialog was closed');
 		});
 	}
-
-	private getCampusInit(): void {
-		this._service.getCampusInit().subscribe(result => this._campus = result);
-	}
-
-	private getCampus(cidade: String): void {
-		console.log(cidade)
-		this._service.getCampus(cidade).subscribe(result => this._campus = result);
-	}
-
-	delete(): void { }
 }
 
 @Component({

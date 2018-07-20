@@ -33,15 +33,7 @@ export class CampusService {
 			);
 	}
 
-	getCampusInit(): Observable<Campus[]> {
-		return this._http.get<Campus[]>(this._url)
-			.pipe(
-				tap(() => console.log('Fetched Campus!')),
-				catchError(this._handleError('getCampus', []))
-			);
-	}
-
-	getCampus(cidade: String): Observable<Campus[]> {
+	getCampus(): Observable<Campus[]> {
 		return this._http.get<Campus[]>(this._url)
 			.pipe(
 				tap(),
@@ -49,7 +41,7 @@ export class CampusService {
 			);
 	}
 
-	get(campus: Campus | number): Observable<Campus> {
+	getCampi(campus: Campus | number): Observable<Campus> {
 		const id = typeof campus === 'number' ? campus : campus.id;
 		const url = `${this._url}/${id}`;
 		return this._http.get<Campus>(url)
