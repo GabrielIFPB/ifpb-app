@@ -21,7 +21,7 @@ export class CursoComponent implements OnInit {
 
 	constructor(private _service: CursoService, private dialog: MatDialog) {
 		this.dataSource = new MatTableDataSource(this._cursos);
-		// this._service.getCampus().subscribe(result => this.dataSource.data = result);
+		this._service.getCursos().subscribe(result => this.dataSource.data = result);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
 	}
@@ -60,7 +60,14 @@ export class ModalComponent {
 
 	constructor(private _service: CursoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Curso) { }
 
-	save(): void { }
+	save(): void { 
+		let curso = {
+			id: null,
+			name: this._name,
+			nivel: this._nivel,
+			campi: null
+		}
+	}
 
 	close(): void { this.dialogRef.close(); }
 }
