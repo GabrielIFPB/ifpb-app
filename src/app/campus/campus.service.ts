@@ -64,7 +64,7 @@ export class CampusService {
 		const url = `${this._url}/${id}`;
 		return this._http.delete<Campus>(url , httpOptions)
 			.pipe(
-				tap(aluno => console.log('')),
+				tap(curso => console.log('')),
 				catchError(this._handleError<Campus>(''))
 			);
 	}
