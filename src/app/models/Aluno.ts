@@ -1,5 +1,5 @@
 import { Pessoa } from './Pessoa';
-import { Curso } from './Curso';
+import { Curso } from '../curso/curso';
 import { Periodo } from './Periodo';
 import { Turma } from './Turma';
 import { Turno } from './Turno';

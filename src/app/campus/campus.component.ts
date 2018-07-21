@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { CampusService } from './campus.service';
-import { Campus } from './Campus';
+import { Campus } from './campus';
 
 @Component({
 	selector: 'app-campus',
@@ -12,8 +12,6 @@ import { Campus } from './Campus';
 export class CampusComponent implements OnInit {
 
 	private _campus: Campus[];
-
-	private is_set: boolean = false;
 
 	displayedColumns: string[] = ['id', 'sigla', 'cidade', 'data', 'ativo', 'edit'];
   	dataSource: MatTableDataSource<Campus>;
@@ -80,7 +78,5 @@ export class ModalComponent {
 		}
 	}
 
-	close(): void {
-		this.dialogRef.close();
-	}
+	close(): void { this.dialogRef.close(); }
 }
