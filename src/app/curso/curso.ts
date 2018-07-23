@@ -1,8 +1,13 @@
 import { Campus } from '../campus/campus';
 
+export interface Nivel {
+	id: number
+	nivel: string
+}
+
 export interface Curso {
 	id: number
-	nome: string
-	campus: Campus
+	name: string
+	campi: any
 	nivel: string
 }
