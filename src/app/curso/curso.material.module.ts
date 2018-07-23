@@ -8,16 +8,16 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
 	imports: [ MatTableModule, MatInputModule, MatCardModule,
 				MatIconModule, MatPaginatorModule, MatTooltipModule,
-				MatDialogModule, MatButtonModule, MatRadioModule
+				MatDialogModule, MatButtonModule, MatSelectModule
 	],
 	exports: [ MatTableModule, MatInputModule, MatCardModule,
 				MatIconModule, MatPaginatorModule, MatTooltipModule,
-				MatDialogModule, MatButtonModule, MatRadioModule
+				MatDialogModule, MatButtonModule, MatSelectModule
 	]
 })
 export class MaterialCursoModule { }

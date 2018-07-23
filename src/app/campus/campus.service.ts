@@ -28,7 +28,7 @@ export class CampusService {
 	add(campus: Campus): Observable<Campus> {
 		return this._http.post<Campus>(this._url, campus, httpOptions)
 			.pipe(
-				tap(campus => console.log('add campus')),
+				tap(() => console.log('add campus')),
 				catchError(this._handleError<Campus>('ERROR: ADD CAMPUS'))
 			);
 	}
@@ -64,7 +64,7 @@ export class CampusService {
 		const url = `${this._url}/${id}`;
 		return this._http.delete<Campus>(url , httpOptions)
 			.pipe(
-				tap(curso => console.log('')),
+				tap(() => console.log('')),
 				catchError(this._handleError<Campus>(''))
 			);
 	}
