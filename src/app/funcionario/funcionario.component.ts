@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+
 
 import { FuncionarioService } from './funcionario.service';
 import { Funcionario } from './funcionario';
@@ -39,7 +41,7 @@ export class FuncionarioComponent implements OnInit {
 	openDialog(): void {
 		let dialogRef = this.dialog.open(ModalComponent, {
 			width: '400px',
-			height: '350px',
+			height: '450px',
 			data: {}
 		});
 
@@ -57,30 +59,24 @@ export class FuncionarioComponent implements OnInit {
 export class ModalComponent {
 
 	private _name: string = null;
-	private _nivel: number = null;
+	private _cpf: string = null;
+	private _email: string = null;
 	private _campi: number = null;
 	private _error: any;
-	// private _curso: Curso;
 	private _campus: Campus[];
-	// private _niveis: Array<Nivel> = [ 
-	// 	{ id: 1, nivel: 'Integrado' },
-	// 	{ id: 2, nivel: 'Subsequente' },
-	// 	{ id: 3, nivel: 'Superior' },
-	// 	{ id: 4, nivel: 'Pós graduação' } 
-	// ];
 
-	constructor(private _service: FuncionarioService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Funcionario, public snackBar: MatSnackBar) {
+	email = new FormControl('', [Validators.required, Validators.email]);
+
+	constructor(private _service: FuncionarioService, 
+					public dialogRef: MatDialogRef<ModalComponent>, 
+						@Inject(MAT_DIALOG_DATA) public data: Funcionario, 
+							public snackBar: MatSnackBar, public formControl: FormControl) {
 		this._service.getCampus().subscribe(result => this._campus = result);
 	}
 
 	save(): void {
-		if (this._name &&  this._nivel, this._campi) {
-			let curso = {
-				id: null,
-				name: this._name,
-				// nivel: this._niveis[(this._nivel - 1)].nivel,
-				campi: this._campi
-			}
+		if (false) {
+			
 			// this._service.add(curso)
 			// 	.subscribe(result => this._curso = result, error => this._error = error);
 			this.snackBar.open('ok', 'Fechar', { duration: 2000, });
@@ -88,6 +84,12 @@ export class ModalComponent {
 			this.snackBar.open('no', 'Fechar', { duration: 2000, });
 		}
 	}
+
+	getErrorMessage() {
+		return this.email.hasError('required') ? 'You must enter a value' :
+			this.email.hasError('email') ? 'Not a valid email' :
+				'';
+	  }
 
 	close(): void { this.dialogRef.close(); }
 }
