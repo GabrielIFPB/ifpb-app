@@ -1,4 +1,4 @@
-import { Refeicao } from './Refeicao';
+import { Refeicao } from '../refeicao/Refeicao';
 
 export interface PeriodoRefeicaoRealizada {
 	refeicao: Refeicao

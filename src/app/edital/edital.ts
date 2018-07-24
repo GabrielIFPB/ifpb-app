@@ -1,6 +1,6 @@
 import { Campus } from '../campus/campus';
 import { Evento } from '../models/Evento';
-import { Funcionario } from '../models/Funcionario';
+import { Funcionario } from '../funcionario/Funcionario';
 
 export interface Edital {
 	id: number

@@ -1,6 +1,6 @@
 import { DiaRefeicao } from './DiaRefeicao';
 import { Motivo } from './Motivo';
-import { Funcionario } from './Funcionario';
+import { Funcionario } from '../funcionario/Funcionario';
 
 export interface Bloqueio {
 	id: number

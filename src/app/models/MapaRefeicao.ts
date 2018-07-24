@@ -1,4 +1,4 @@
-import { Refeicao } from './Refeicao';
+import { Refeicao } from '../refeicao/Refeicao';
 import { Dia } from './Dia';
 import { Edital } from '../edital/edital';
 import { Aluno } from './Aluno';
