@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 import { CursoService } from './curso.service';
 import { Curso, Nivel } from './curso';
@@ -56,9 +56,9 @@ export class CursoComponent implements OnInit {
 })
 export class ModalComponent {
 
-	private _name: string = '';
-	private _nivel: number;
-	private _campi: number = 0;
+	private _name: string = null;
+	private _nivel: number = null;
+	private _campi: number = null;
 	private _error: any;
 	private _curso: Curso;
 	private _campus: Campus[];
@@ -69,22 +69,23 @@ export class ModalComponent {
 		{ id: 4, nivel: 'Pós graduação' } 
 	];
 
-	constructor(private _service: CursoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Curso) {
+	constructor(private _service: CursoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Curso, public snackBar: MatSnackBar) {
 		this._service.getCampus().subscribe(result => this._campus = result);
 	}
 
 	save(): void {
-		let curso = {
-			id: null,
-			name: this._name,
-			nivel: this._niveis[(this._nivel - 1)].nivel,
-			campi: this._campi
-		}
-
-		if (this._name &&  this._nivel) {
-			this._service.add(curso).subscribe(result => this._curso = result, error => this._error = error);
+		if (this._name &&  this._nivel, this._campi) {
+			let curso = {
+				id: null,
+				name: this._name,
+				nivel: this._niveis[(this._nivel - 1)].nivel,
+				campi: this._campi
+			}
+			// this._service.add(curso)
+			// 	.subscribe(result => this._curso = result, error => this._error = error);
+			this.snackBar.open('ok', 'Fechar', { duration: 2000, });
 		} else {
-
+			this.snackBar.open('no', 'Fechar', { duration: 2000, });
 		}
 	}
 
