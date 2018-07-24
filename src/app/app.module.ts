@@ -20,7 +20,7 @@ import { MaterialAppModule } from './material.app.module';
 @NgModule({
     declarations: [
         AppComponent,
-        Home
+        Home,
     ],
     imports: [
         BrowserModule,

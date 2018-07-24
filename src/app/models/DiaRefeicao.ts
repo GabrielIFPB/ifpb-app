@@ -1,8 +1,8 @@
 import { Aluno } from './Aluno';
 import { Dia } from './Dia';
-import { Refeicao } from './Refeicao';
+import { Refeicao } from '../refeicao/Refeicao';
 import { Edital } from '../edital/edital';
-import { Funcionario } from './Funcionario';;
+import { Funcionario } from '../funcionario/Funcionario';;
 
 export interface DiaRefeicao {
 	id: number

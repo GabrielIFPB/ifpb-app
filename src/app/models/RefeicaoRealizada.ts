@@ -1,5 +1,5 @@
 import { ConfirmaRefeicaoDia } from './ConfirmaRefeicaoDia';
-import { Funcionario } from './Funcionario';
+import { Funcionario } from '../funcionario/Funcionario';
 
 export interface RefeicaoRealizada {
     id: number
