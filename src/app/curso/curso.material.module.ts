@@ -9,15 +9,16 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
 	imports: [ MatTableModule, MatInputModule, MatCardModule,
 				MatIconModule, MatPaginatorModule, MatTooltipModule,
-				MatDialogModule, MatButtonModule, MatSelectModule
+				MatDialogModule, MatButtonModule, MatSelectModule, MatSnackBarModule
 	],
 	exports: [ MatTableModule, MatInputModule, MatCardModule,
 				MatIconModule, MatPaginatorModule, MatTooltipModule,
-				MatDialogModule, MatButtonModule, MatSelectModule
+				MatDialogModule, MatButtonModule, MatSelectModule, MatSnackBarModule
 	]
 })
 export class MaterialCursoModule { }

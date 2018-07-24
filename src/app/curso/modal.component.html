@@ -17,7 +17,7 @@
 			</mat-form-field>
 			<mat-form-field>
 				<mat-select required [(ngModel)]="_campi">
-					<mat-option *ngFor="let campi of _campus" [value]="campi.id">{{ campi.sigla }} - {{ campi.cidade }}</mat-option>
+					<mat-option (click)="onClickDisabled()" *ngFor="let campi of _campus" [value]="campi.id">{{ campi.sigla }} - {{ campi.cidade }}</mat-option>
 				</mat-select>
 				<mat-label><mat-icon>favorite</mat-icon> <b> Fancy</b> <i> label</i></mat-label>
 			</mat-form-field>
@@ -25,6 +25,6 @@
 	</mat-card-content>
 	<mat-card-actions>
 		<button mat-button (click)="close()">Fechar</button>
-		<button mat-button (click)='save()'>Salvar</button>
+		<button mat-button (click)="save()" >Salvar</button>
 	</mat-card-actions>
 </mat-card>
