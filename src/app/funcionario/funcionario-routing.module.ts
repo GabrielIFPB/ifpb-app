@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
+
+import { FuncionarioComponent } from './funcionario.component';
+
+const routes: Routes = [
+	{ path: 'funcionarios',	component: FuncionarioComponent, },
+];
 
 @NgModule({
   imports: [
-    CommonModule
-  ],
+		RouterModule.forChild(routes)
+	],
   declarations: []
 })
 export class FuncionarioRoutingModule { }
