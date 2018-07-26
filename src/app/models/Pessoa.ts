@@ -1,12 +1,12 @@
-import { Campus } from '../campus/campus';
-
 export interface Pessoa {
 	id: number
 	name: string
-	keyAuth: string
+	cpf: string
+	// keyAuth: string
 	email: string
-	campus: any  // podendo ser um objeto ou um id
-	tipo: number
+	campi: any  // podendo ser um objeto do tipo campus ou um id
+	type: number
 	ativo: boolean
 	dataInsercao: string
+	dateUpdate: string
 }

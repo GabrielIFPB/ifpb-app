@@ -10,15 +10,18 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
 	imports: [ MatTableModule, MatInputModule, MatCardModule,
 				MatIconModule, MatPaginatorModule, MatTooltipModule,
-				MatDialogModule, MatButtonModule, MatSelectModule, MatSnackBarModule
+				MatDialogModule, MatButtonModule, MatSelectModule, MatSnackBarModule,
+				MatRadioModule
 	],
 	exports: [ MatTableModule, MatInputModule, MatCardModule,
 				MatIconModule, MatPaginatorModule, MatTooltipModule,
-				MatDialogModule, MatButtonModule, MatSelectModule, MatSnackBarModule
+				MatDialogModule, MatButtonModule, MatSelectModule, MatSnackBarModule,
+				MatRadioModule
 	]
 })
 export class MaterialFuncionarioModule { }

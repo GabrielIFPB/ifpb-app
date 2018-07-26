@@ -19,7 +19,7 @@
 				<mat-select required [(ngModel)]="_campi">
 					<mat-option (click)="onClickDisabled()" *ngFor="let campi of _campus" [value]="campi.id">{{ campi.sigla }} - {{ campi.cidade }}</mat-option>
 				</mat-select>
-				<mat-label><mat-icon>favorite</mat-icon> <b> Fancy</b> <i> label</i></mat-label>
+				<mat-label><mat-icon>favorite</mat-icon> <b> Campus</b> <i> do curso</i></mat-label>
 			</mat-form-field>
 		</section>
 	</mat-card-content>
