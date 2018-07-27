@@ -6,18 +6,15 @@
 	</mat-card-header>
 	<mat-card-content>
 		<mat-form-field>
-			<input matInput placeholder="Nome" (keyup)="onKeyUp($event)" [(ngModel)]="_name" required>
-			<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+			<input matInput placeholder="Nome" [(ngModel)]="_name" required>
 		</mat-form-field>
 
 		<mat-form-field>
-			<input matInput MASK='/[0-9]{3}-[0-9]{3}/' placeholder="CPF" [(ngModel)]="_cpf" required>
-			<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+			<input matInput placeholder="CPF" [(ngModel)]="_cpf" required>
 		</mat-form-field>
 
 		<mat-form-field>
-			<input matInput placeholder="Enter your email" required>
-			<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+			<input matInput type="email" placeholder="E-mail" [(ngModel)]="_email" required>
 		</mat-form-field>
 
 		<mat-form-field>
