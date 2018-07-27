@@ -13,7 +13,9 @@ import { Campus } from '../campus/campus';
 })
 export class FuncionarioComponent implements OnInit {
 
-	private _funcionario: Funcionario[];
+	private _nome: string = null;
+
+	private _funcionarios: Funcionario[];
 
 	displayedColumns: string[] = ['id', 'name', 'ativo', 'edit'];
 	dataSource: MatTableDataSource<Funcionario>;
@@ -22,31 +24,32 @@ export class FuncionarioComponent implements OnInit {
 	@ViewChild(MatSort) sort: MatSort;
 
 	constructor(private _service: FuncionarioService, private dialog: MatDialog) {
-	this.dataSource = new MatTableDataSource(this._funcionario);
-		this._service.getFuncionarios().subscribe(result => this.dataSource.data = result);
-		this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
+		this.dataSource = new MatTableDataSource(this._funcionarios);		
 	}
 
 	rowClicked(row: any): void { console.log(row); }
 
 	ngOnInit() { }
 
-	applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
-		if (this.dataSource.paginator) { this.dataSource.paginator.firstPage(); }
+	burcarFuncionario() {
+		this.dataSource.filter = this._nome.trim().toLowerCase();
+		this.dataSource = new MatTableDataSource(this._funcionarios);
+		this._service.getFuncionarioByName(this._nome).subscribe(result => this.dataSource.data = result);
+		this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
 	}
 
-	openDialog(): void {
+	cadastrarFuncionarioDialog(): void {
 		let dialogRef = this.dialog.open(ModalComponent, {
 			width: '450px',
 			height: '500px',
 			data: {}
 		});
+	}
 
-		dialogRef.afterClosed().subscribe(result => {
-			console.log('The dialog was closed');
-		});
+	limpar(): void {
+		this._nome = '';
+		this.dataSource.data = [];
 	}
 }
 
@@ -77,51 +80,44 @@ export class ModalComponent {
 		'Coordenação de informática',
 	];
 
-	email = new FormControl('e-mail', [Validators.required, Validators.email]);
+	//TODO: Tipo do funcionário: Professor, Técnico Administrativo.
 
 	constructor(private _service: FuncionarioService,
 					public snackBar: MatSnackBar,
-						public dialogRef: MatDialogRef<ModalComponent>, 
+						public dialogRef: MatDialogRef<ModalComponent>,
 							@Inject(MAT_DIALOG_DATA) public data: Funcionario) {
+								
 		this._service.getCampus().subscribe(result => this._campus = result);
 	}
 
-	onKeyUp(event: KeyboardEvent) {
+	onKeyUp(event: KeyboardEvent): boolean {
 		let value = (<HTMLInputElement>event.target).value;
-		console.log(value[value.length-1]);
-		console.log(typeof value.charCodeAt(value.length-1));
+		let numbers = ['1', '2', '3'];
+		if (value[value.length - 1] == '1') return true;
+		console.log(value[value.length - 1]);
+
+		console.log(typeof value.charCodeAt(value.length - 1));
 		console.log((<HTMLInputElement>event.target).value);
+		return;
 	}
 
 	save(): void {
-		if (this._ativo != null &&
-				this._name &&
-					this._cpf &&
-						this._email && this._campi) {
-			let funcionario = {
-				id: null,
-				name: this._name,
-				cpf: this._cpf,
-				email: this._email,
-				campi: this._campi,
-				type: -1,
-				dataInsercao: null,
-				dateUpdate: null,
-				setor: null,
-				password: null,
-				ativo: this._ativo
-			}
-			// this._service.add(funcionario)
-			// 	.subscribe(result => this._funcionario = result, error => this._error = error);
-			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 2000, });
-		} else {
-			this.snackBar.open('Error ao salvar!', 'Fechar', { duration: 2000, });
+		let funcionario = {
+			id: null,
+			name: this._name,
+			cpf: this._cpf,
+			email: this._email,
+			campi: this._campi,
+			type: -1,
+			dataInsercao: null,
+			dateUpdate: null,
+			setor: null,
+			password: null,
+			ativo: this._ativo
 		}
-	}
-
-	getErrorMessage() {
-		return this.email.hasError('required') ? 'You must enter a value' :
-			this.email.hasError('email') ? 'Not a valid email' : '';
+		this._service.add(funcionario)
+			.subscribe(result => this._funcionario = result, error => this._error = error);
+		this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 2000, });
 	}
 
 	close(): void { this.dialogRef.close(); }

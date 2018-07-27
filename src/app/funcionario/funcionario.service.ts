@@ -7,16 +7,16 @@ import { Funcionario } from './funcionario';
 import { Campus } from '../campus/campus';
 
 const httpOptions = {
-	headers: new HttpHeaders({'Content-Type': 'application/json'})
+	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable()
 export class FuncionarioService {
 
-  private _url: string = 'http://localhost:3000/funcionarios';
-  private _urlCampus: string = 'http://localhost:3000/campus';
-  
-  private _handleError<T>(operation = 'operation', result?: T) {
+	private _url: string = 'http://localhost:3000/funcionarios';
+	private _urlCampus: string = 'http://localhost:3000/campus';
+
+	private _handleError<T>(operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
 			console.error(error);
 			console.error(error, `Operation: --> ${operation} <--`);
@@ -25,33 +25,33 @@ export class FuncionarioService {
 		}
 	}
 
-  constructor(private _http: HttpClient) { }
+	constructor(private _http: HttpClient) { }
 
-  add(funcionario: Funcionario): Observable<Funcionario> {
+	add(funcionario: Funcionario): Observable<Funcionario> {
 		return this._http.post<Funcionario>(this._url, funcionario, httpOptions)
 			.pipe(
-				tap(funcionario => console.log('add funcionario')),
-				catchError(this._handleError<Funcionario>('ERROR: ADD funcionario'))
+				tap(() => console.log('Salvo com sucesso!')),
+				catchError(this._handleError<Funcionario>('Problema ao adicionar o funcionário'))
 			);
-  }
-  
-  getFuncionarios(): Observable<Funcionario[]> {
+	}
+
+	getFuncionarios(): Observable<Funcionario[]> {
 		return this._http.get<Funcionario[]>(this._url)
 			.pipe(
-				tap(funcionario => console.log('Fetched Funcionario!!!')),
-				catchError(this._handleError('getFuncionario', []))
+				tap(() => console.log('Fetched Funcionários!!')),
+				catchError(this._handleError('Erro ao buscar todos os funcionários', []))
 			);
-  }
-  
-  getCampus(): Observable<Campus[]> {
+	}
+
+	getCampus(): Observable<Campus[]> {
 		return this._http.get<Campus[]>(this._urlCampus)
 			.pipe(
 				tap(() => console.log('Fetched campus!!!')),
 				catchError(this._handleError('getCamppus', []))
 			);
-  }
-  
-  getFuncionario(funcionario: Funcionario | number): Observable<Funcionario> {
+	}
+
+	getFuncionario(funcionario: Funcionario | number): Observable<Funcionario> {
 		const id = typeof funcionario === 'number' ? funcionario : funcionario.id;
 		const url = `${this._url}/${id}`;
 		return this._http.get<Funcionario>(url)
@@ -59,9 +59,9 @@ export class FuncionarioService {
 				tap(() => console.log('')),
 				catchError(this._handleError<Funcionario>('get'))
 			);
-  }
-  
-  put(funcionario: Funcionario): Observable<Funcionario> {
+	}
+
+	put(funcionario: Funcionario): Observable<Funcionario> {
 		return this._http.put<Funcionario>(this._url, funcionario, httpOptions)
 			.pipe(
 				tap(() => console.log('')),
@@ -70,18 +70,19 @@ export class FuncionarioService {
 	}
 
 	delete(funcionario: Funcionario | number): Observable<Funcionario> {
-		const id = typeof funcionario === 'number' ? funcionario : funcionario.id ;
+		const id = typeof funcionario === 'number' ? funcionario : funcionario.id;
 		const url = `${this._url}/${id}`;
-		return this._http.delete<Funcionario>(url , httpOptions)
+		return this._http.delete<Funcionario>(url, httpOptions)
 			.pipe(
-				tap(funcionario => console.log('')),
+				tap(() => console.log('')),
 				catchError(this._handleError<Funcionario>(''))
 			);
 	}
 
-	search(str: String): Observable<Funcionario[]> {
-		if (!str.trim()) return of([]);
-		return this._http.get<Funcionario[]>(this._url)
+	getFuncionarioByName(nome: String): Observable<Funcionario[]> {
+		if (!nome.trim()) return of([]);
+		let url = `${this._url}?nome=${nome}`;
+		return this._http.get<Funcionario[]>(url)
 			.pipe(
 				tap(() => console.log('Fetched Funcionario!')),
 				catchError(this._handleError('searchFuncionario', []))
