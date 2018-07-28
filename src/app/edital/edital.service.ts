@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Edital } from './edital';
 import { Campus } from '../campus/campus';
+import { Funcionario } from '../funcionario/funcionario';
 
 const httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -35,6 +36,14 @@ export class EditalService {
 			);
 	}
 
+	getFuncionarios(): Observable<Funcionario[]> {
+		return this._http.get<Funcionario[]>(this._url)
+			.pipe(
+				tap(() => console.log('Fetched Funcionários!')),
+				catchError(this._handleError('Erro ao buscar todos os funcionários', []))
+			);
+	}
+
 	getCampus(): Observable<Campus[]> {
 		return this._http.get<Campus[]>(this._urlCampus)
 			.pipe(
@@ -46,8 +55,8 @@ export class EditalService {
 	put(edital: Edital): Observable<Edital> {
 		return this._http.put<Edital>(this._url, edital, httpOptions)
 			.pipe(
-				tap(() => console.log('')),
-				catchError(this._handleError<Edital>(''))
+				tap(() => console.log('Atualizado com sucesso!')),
+				catchError(this._handleError<Edital>('Erro ao atualizar edital!'))
 			);
 	}
 
@@ -61,7 +70,7 @@ export class EditalService {
 			);
 	}
 
-	search(name: String): Observable<Edital[]> {
+	getEditalByName(name: String): Observable<Edital[]> {
 		if (!name.trim()) return of([]);
 		let url = `${this._url}?q=${name}`;
 		return this._http.get<Edital[]>(url)

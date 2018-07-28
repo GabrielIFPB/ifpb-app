@@ -8,7 +8,7 @@
 		<mat-form-field>
 			<input matInput (keyup)="burcarFuncionario()" placeholder="Filter" [(ngModel)]="_nome">
 		</mat-form-field>
-		<button mat-button class="marge1" (click)="limpar()">Limpar</button>
+		<button mat-button class="marge1" (click)="clear()">Limpar</button>
 		<button mat-button class="marge1" (click)="cadastrarFuncionarioDialog()">Adicionar</button>
 		<div class="mat-elevation-z8">
 			<table mat-table [dataSource]="dataSource" matSort >
