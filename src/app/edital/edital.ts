@@ -13,7 +13,6 @@ export interface Edital {
 	evento: Evento
 	responsavel: any
 	previstoPretensao: boolean
-	funcionario: any
 	dataInsercao: string
 	ativo: boolean
 }

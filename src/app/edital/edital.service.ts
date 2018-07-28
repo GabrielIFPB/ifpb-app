@@ -15,6 +15,7 @@ const httpOptions = {
 export class EditalService {
 
 	private _url: string = 'http://localhost:3000/editais';
+	private _urlFuncionarios = 'http://localhost:3000/funcionarios';
 	private _urlCampus: string = 'http://localhost:3000/campus';
 
 	private _handleError<T>(operation = 'operation', result?: T) {
@@ -37,7 +38,7 @@ export class EditalService {
 	}
 
 	getFuncionarios(): Observable<Funcionario[]> {
-		return this._http.get<Funcionario[]>(this._url)
+		return this._http.get<Funcionario[]>(this._urlFuncionarios)
 			.pipe(
 				tap(() => console.log('Fetched Funcionários!')),
 				catchError(this._handleError('Erro ao buscar todos os funcionários', []))
