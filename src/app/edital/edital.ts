@@ -4,16 +4,16 @@ import { Funcionario } from '../funcionario/funcionario';
 
 export interface Edital {
 	id: number
-	nome: string
-	campus: Campus
+	name: string
+	campi: Campus
 	quantidadeBeneciadosPrevista: number
 	quantidadeBeneciadosReal: number
 	dataInicial: string
 	dataFinal: string
 	evento: Evento
-	responsavel: Funcionario
+	responsavel: any
 	previstoPretensao: boolean
-	funcionario: Funcionario
+	funcionario: any
 	dataInsercao: string
 	ativo: boolean
 }

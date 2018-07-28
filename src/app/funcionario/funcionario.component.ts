@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+// import { FormControl, Validators } from '@angular/forms';
 import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 import { FuncionarioService } from './funcionario.service';

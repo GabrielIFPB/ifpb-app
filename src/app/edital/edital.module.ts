@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { EditalComponent, ModalComponent } from './edital.component';
 import { EditalRoutingModule } from './edital-routing.module';
 import { MaterialEditalModule } from './edital.material.module';
+import { EditalService } from './edital.service';
 
 @NgModule({
 	imports: [
@@ -15,6 +16,6 @@ import { MaterialEditalModule } from './edital.material.module';
 	],
 	declarations: [ EditalComponent, ModalComponent ],
 	entryComponents: [ ModalComponent ],
-	providers: [ ]
+	providers: [ EditalService ]
 })
 export class EditalModule {}
