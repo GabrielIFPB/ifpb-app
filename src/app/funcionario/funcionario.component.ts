@@ -14,7 +14,6 @@ import { Campus } from '../campus/campus';
 export class FuncionarioComponent implements OnInit {
 
 	private _nome: string = null;
-
 	private _funcionarios: Funcionario[];
 
 	displayedColumns: string[] = ['id', 'name', 'ativo', 'edit'];
@@ -23,18 +22,15 @@ export class FuncionarioComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
-	constructor(private _service: FuncionarioService, private dialog: MatDialog) {
-		this.dataSource = new MatTableDataSource(this._funcionarios);		
-	}
+	constructor(private _service: FuncionarioService, private dialog: MatDialog) { }
 
 	rowClicked(row: any): void { console.log(row); }
 
 	ngOnInit() { }
 
 	burcarFuncionario() {
-		this.dataSource.filter = this._nome.trim().toLowerCase();
 		this.dataSource = new MatTableDataSource(this._funcionarios);
-		this._service.getFuncionarioByName(this._nome).subscribe(result => this.dataSource.data = result);
+		this._service.getFuncionarioByName(this._nome.trim().toLowerCase()).subscribe(result => this.dataSource.data = result);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
 	}

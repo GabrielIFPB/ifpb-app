@@ -38,7 +38,7 @@ export class FuncionarioService {
 	getFuncionarios(): Observable<Funcionario[]> {
 		return this._http.get<Funcionario[]>(this._url)
 			.pipe(
-				tap(() => console.log('Fetched Funcionários!!')),
+				tap(() => console.log('Fetched Funcionários!')),
 				catchError(this._handleError('Erro ao buscar todos os funcionários', []))
 			);
 	}
@@ -46,8 +46,8 @@ export class FuncionarioService {
 	getCampus(): Observable<Campus[]> {
 		return this._http.get<Campus[]>(this._urlCampus)
 			.pipe(
-				tap(() => console.log('Fetched campus!!!')),
-				catchError(this._handleError('getCamppus', []))
+				tap(() => console.log('Fetched campus!')),
+				catchError(this._handleError('Erro ao buscar todos os campus', []))
 			);
 	}
 
@@ -81,7 +81,7 @@ export class FuncionarioService {
 
 	getFuncionarioByName(nome: String): Observable<Funcionario[]> {
 		if (!nome.trim()) return of([]);
-		let url = `${this._url}?nome=${nome}`;
+		let url = `${this._url}?q=${nome}`;
 		return this._http.get<Funcionario[]>(url)
 			.pipe(
 				tap(() => console.log('Fetched Funcionario!')),

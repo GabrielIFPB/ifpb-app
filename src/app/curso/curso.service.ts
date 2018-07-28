@@ -79,12 +79,13 @@ export class CursoService {
 			);
 	}
 
-	searchAluno(str: String): Observable<Curso[]> {
-		if (!str.trim()) return of([]);
-		return this._http.get<Curso[]>(this._url)
+	getCursoByName(name: String): Observable<Curso[]> {
+		if (!name.trim()) return of([]);
+		let url = `${this._url}?q=${name}`;
+		return this._http.get<Curso[]>(url)
 			.pipe(
-				tap(() => console.log('Fetched Campus!')),
-				catchError(this._handleError('searchCampus', []))
+				tap(() => console.log('Fetched Curso name!')),
+				catchError(this._handleError('getCursoByName', []))
 			);
 	}
 }
