@@ -12,6 +12,7 @@ import { Campus } from '../campus/campus';
 })
 export class CursoComponent implements OnInit {
 
+	private _name: string = null;
 	private _cursos: Curso[];
 
 	displayedColumns: string[] = ['id', 'name', 'nivel', 'edit'];
@@ -20,20 +21,17 @@ export class CursoComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
-	constructor(private _service: CursoService, private dialog: MatDialog) {
-		this.dataSource = new MatTableDataSource(this._cursos);
-		this._service.getCursos().subscribe(result => this.dataSource.data = result);
-		this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
-	}
+	constructor(private _service: CursoService, private dialog: MatDialog) { }
 
 	rowClicked(row: any): void { console.log(row); }
 
 	ngOnInit() { }
 
-	applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
-		if (this.dataSource.paginator) { this.dataSource.paginator.firstPage(); }
+	search() {
+		this.dataSource = new MatTableDataSource(this._cursos);
+		this._service.getCursoByName(this._name.trim().toLowerCase()).subscribe(result => this.dataSource.data = result);
+		this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
 	}
 
 	openDialog(): void {
@@ -46,6 +44,11 @@ export class CursoComponent implements OnInit {
 		dialogRef.afterClosed().subscribe(result => {
 			console.log('The dialog was closed');
 		});
+	}
+
+	clear(): void {
+		this._name = '';
+		this.dataSource.data = [];
 	}
 }
 
