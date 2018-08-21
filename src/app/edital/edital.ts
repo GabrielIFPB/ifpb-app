@@ -6,8 +6,8 @@ export interface Edital {
 	id: number
 	name: string
 	campi: Campus
-	quantidadeBeneciadosPrevista: number
-	quantidadeBeneciadosReal: number
+	qtdBeneciadosPrevista: number
+	qtdBeneciadosReal: number
 	dataInicial: string
 	dataFinal: string
 	evento: Evento

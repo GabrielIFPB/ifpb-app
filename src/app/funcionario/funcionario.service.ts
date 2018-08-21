@@ -79,9 +79,9 @@ export class FuncionarioService {
 			);
 	}
 
-	getFuncionarioByName(nome: String): Observable<Funcionario[]> {
-		if (!nome.trim()) return of([]);
-		let url = `${this._url}?q=${nome}`;
+	getFuncionarioByName(name: String): Observable<Funcionario[]> {
+		if (!name.trim()) return of([]);
+		let url = `${this._url}?name=${name}`;
 		return this._http.get<Funcionario[]>(url)
 			.pipe(
 				tap(() => console.log('Fetched Funcionario!')),
