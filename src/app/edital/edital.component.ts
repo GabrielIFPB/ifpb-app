@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
+import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+
 import { EditalService } from './edital.service';
 import { Edital } from './edital';
 import { Campus } from '../campus/campus';
@@ -56,7 +59,18 @@ export class EditalComponent implements OnInit {
 @Component({
 	selector: 'app-dialog',
 	templateUrl: './modal.component.html',
-	styleUrls: ['./modal.component.css']
+	styleUrls: ['./modal.component.css'],
+	providers: [
+		// The locale would typically be provided on the root module of your application. We do it at
+		// the component level here, due to limitations of our example generation script.
+		{provide: MAT_DATE_LOCALE, useValue: 'fr'},
+	
+		// `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
+		// `MatMomentDateModule` in your applications root module. We provide it at the component level
+		// here, due to limitations of our example generation script.
+		{provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+		{provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+	  ],
 })
 export class ModalComponent {
 
@@ -66,7 +80,11 @@ export class ModalComponent {
 	private _campus: Campus[];
 	private _funcionarios: Funcionario[];
 
-	constructor(private _service: EditalService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Edital, public snackBar: MatSnackBar) {
+	private _options: string[] = ['Aula de reposição', 'Refeições'];
+
+	constructor(private _service: EditalService, 
+			public dialogRef: MatDialogRef<ModalComponent>, 
+			@Inject(MAT_DIALOG_DATA) public data: Edital, public snackBar: MatSnackBar, private adapter: DateAdapter<any>) {
 		this._service.getCampus().subscribe(result => this._campus = result);
 		this._service.getFuncionarios().subscribe(result => this._funcionarios = result);
 	}

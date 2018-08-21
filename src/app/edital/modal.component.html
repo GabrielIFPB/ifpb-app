@@ -8,9 +8,32 @@
 		<section>
 			<mat-form-field>
 				<input matInput placeholder="Nome" [(ngModel)]="_name" required>
-            </mat-form-field>
-            
-            <mat-form-field>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput [matDatepicker]="di" placeholder="Data início">
+				<mat-datepicker-toggle matSuffix [for]="di"></mat-datepicker-toggle>
+				<mat-datepicker #di></mat-datepicker>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput [matDatepicker]="df" placeholder="Data final">
+				<mat-datepicker-toggle matSuffix [for]="df"></mat-datepicker-toggle>
+				<mat-datepicker #df></mat-datepicker>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput type="number" placeholder="Cotas">
+			</mat-form-field>
+
+			<mat-form-field>
+				<mat-select required [(ngModel)]="_campi">
+					<mat-option *ngFor="let option of _options" [value]="option">{{ option }}</mat-option>
+				</mat-select>
+				<mat-label> <b> Evento</b> </mat-label>
+			</mat-form-field>
+			
+			<mat-form-field>
 				<mat-select required [(ngModel)]="_campi">
 					<mat-option *ngFor="let funcionario of _funcionarios" [value]="funcionario.id">{{ funcionario.nome }}</mat-option>
 				</mat-select>
