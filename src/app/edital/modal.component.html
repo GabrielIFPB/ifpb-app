@@ -1,7 +1,7 @@
 <mat-card>
 	<mat-card-header>
 		<div mat-card-avatar><mat-icon>assignment</mat-icon></div>
-		<mat-card-title class="title">Cadastrar Curso</mat-card-title>
+		<mat-card-title class="title">Cadastrar Edital</mat-card-title>
 		<!-- <mat-card-subtitle>Publicos</mat-card-subtitle> -->
 	</mat-card-header>
 	<mat-card-content>
@@ -14,14 +14,14 @@
 				<mat-select required [(ngModel)]="_campi">
 					<mat-option *ngFor="let funcionario of _funcionarios" [value]="funcionario.id">{{ funcionario.nome }}</mat-option>
 				</mat-select>
-				<mat-label><mat-icon>favorite</mat-icon> <b> Responsável</b> <i> pelo edital</i></mat-label>
+				<mat-label> <b> Responsável</b> <i> pelo edital</i></mat-label>
 			</mat-form-field>
 
 			<mat-form-field>
 				<mat-select required [(ngModel)]="_campi">
 					<mat-option *ngFor="let campi of _campus" [value]="campi.id">{{ campi.sigla }} - {{ campi.cidade }}</mat-option>
 				</mat-select>
-				<mat-label><mat-icon>favorite</mat-icon> <b> Campus</b> <i> do curso</i></mat-label>
+				<mat-label> <b> Campus</b> <i> do curso</i></mat-label>
 			</mat-form-field>
 		</section>
 	</mat-card-content>
