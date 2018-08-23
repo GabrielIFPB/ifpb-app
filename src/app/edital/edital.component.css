@@ -13,7 +13,7 @@ td, th {
 
 mat-card{
 	margin: 2% 0 0 9.5%;
-	width: 80%;
+	width: 81%;
 	padding: 26px 15px 36px 15px;
 	transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
     display: block;

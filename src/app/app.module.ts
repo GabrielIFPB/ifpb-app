@@ -14,6 +14,7 @@ import { EditalModule } from './edital/edital.module';
 import { CampusModule } from './campus/campus.module';
 import { CursoModule } from './curso/curso.module';
 import { FuncionarioModule } from './funcionario/funcionario.module';
+import { RefeicaoModule } from './refeicao/refeicao.module';
 
 import { AppRouting } from './routes/app-routing.module';
 import { MaterialAppModule } from './material.app.module';
@@ -34,6 +35,7 @@ import { MaterialAppModule } from './material.app.module';
         CampusModule,
         CursoModule,
         FuncionarioModule,
+        RefeicaoModule,
         AppRouting,
         BrowserAnimationsModule,
         MaterialAppModule
