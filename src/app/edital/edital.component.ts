@@ -41,7 +41,7 @@ export class EditalComponent implements OnInit {
 	openDialog(): void {
 		let dialogRef = this.dialog.open(ModalComponent, {
 			width: '400px',
-			height: '400px',
+			height: '450px',
 			data: {}
 		});
 
@@ -87,6 +87,14 @@ export class ModalComponent {
 			@Inject(MAT_DIALOG_DATA) public data: Edital, public snackBar: MatSnackBar, private adapter: DateAdapter<any>) {
 		this._service.getCampus().subscribe(result => this._campus = result);
 		this._service.getFuncionarios().subscribe(result => this._funcionarios = result);
+	}
+
+	save(): void {
+		if (true) {
+			this.snackBar.open('ok', 'Fechar', { duration: 2000, });
+		} else {
+			this.snackBar.open('no', 'Fechar', { duration: 2000, });
+		}
 	}
 
 	close(): void { this.dialogRef.close(); }

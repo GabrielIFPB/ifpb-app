@@ -30,6 +30,7 @@
     "moment": "^2.22.2",
     "rxjs": "^6.2.2",
     "sntp": "^3.0.1",
+    "url-parse": "^1.4.3",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
