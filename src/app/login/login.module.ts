@@ -4,13 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
+import { MaterialLoginModule } from './login.material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    LoginRoutingModule
+    LoginRoutingModule,
+    MaterialLoginModule
   ],
-  declarations: [ LoginComponent ]
+  declarations: [ LoginComponent ],
+  entryComponents: [  ],
+  providers: [  ]
 })
 export class LoginModule { }

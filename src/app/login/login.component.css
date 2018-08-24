@@ -1,11 +1,13 @@
 .container{
 	border: 1px solid #CCC;
-	width: 400px;
+	width: 500px;
+	/* max-width: 400px; */
 	padding: 12px;
 	box-shadow: 2px 2px 5px #666;
-	margin: 4% 50% 0 35%;
+	margin: 4% 50% 0 31%;
 }
 
-.full-width{
-	width: 100%;
-}
+.full-width{ width: 100%; }
+.top{ margin-top: 5px; }
+.bottom{ margin-bottom: 15px; }
+/* .mat-button{ margin-left: 5px; } */
