@@ -15,14 +15,14 @@
 			</mat-form-field>
 
 			<mat-form-field>
-				<mat-select required [(ngModel)]="_campi">
+				<mat-select required [(ngModel)]="_option">
 					<mat-option *ngFor="let option of _options" [value]="option">{{ option }}</mat-option>
 				</mat-select>
 				<mat-label> <b> Evento</b> </mat-label>
 			</mat-form-field>
 			
 			<mat-form-field>
-				<mat-select required [(ngModel)]="_campi">
+				<mat-select required [(ngModel)]="_funcionario">
 					<mat-option *ngFor="let funcionario of _funcionarios" [value]="funcionario.id">{{ funcionario.name }}</mat-option>
 				</mat-select>
 				<mat-label> <b> Responsável</b> <i> pelo edital</i></mat-label>

@@ -9,6 +9,7 @@ export class LoginComponent implements OnInit {
 
 	private _username: string = '';
 	private _password: string = '';
+	private _hide: boolean = true;
 
 	constructor() { }
 
