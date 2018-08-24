@@ -40,7 +40,7 @@ export class EditalComponent implements OnInit {
 
 	openDialog(): void {
 		let dialogRef = this.dialog.open(ModalComponent, {
-			width: '400px',
+			width: '500px',
 			height: '450px',
 			data: {}
 		});
