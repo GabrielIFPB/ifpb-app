@@ -1,6 +1,3 @@
-<p>
-	login works!
-</p>
 <mat-card class="container" >
 	<mat-card-header>
 		<mat-card-title>Login</mat-card-title>
@@ -8,7 +5,7 @@
 	</mat-card-header>
 	<mat-card-content>
 
-		<mat-form-field class="full-width bottom">
+		<mat-form-field class="full-width bottom-15px">
 			<input matInput [(ngModel)]="_username" name="username" placeholder="Usuário">
 		</mat-form-field>
 
@@ -19,10 +16,10 @@
 
 	</mat-card-content>
 	<mat-card-actions>
-		<button class="button-margin" mat-button>LIKE</button>
+		<button mat-button>LIKE</button>
 		<button mat-button (click)="submit()">Logar</button>
 	</mat-card-actions>
 	<mat-card-footer>
-
+		<p>Esqueceu sua senha?</p>
 	</mat-card-footer>
 </mat-card>
