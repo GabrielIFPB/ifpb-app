@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { Home } from './controllers/HomeControll';
 
-import { LoginModule } from './modules/Login.module';
+import { LoginModule } from './login/login.module';
 import { AlunoModule } from './modules/Aluno.module';
 import { PanelModule } from './modules/Panel.module';
 import { EditalModule } from './edital/edital.module';
