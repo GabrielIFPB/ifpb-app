@@ -6,8 +6,12 @@
 	box-shadow: 2px 2px 5px #666;
 	margin: 4% 50% 0 31%;
 }
-
+mat-card-content{ 
+	padding: 12px 12px 0px 12px;
+	margin-bottom: 0px;
+}
 .full-width{ width: 100%; }
-.top{ margin-top: 5px; }
-.bottom{ margin-bottom: 15px; }
-/* .mat-button{ margin-left: 5px; } */
+.bottom-15px{ margin-bottom: 15px; }
+mat-card-actions{ align-items: center; text-align: center; }
+mat-card-footer{ margin: 0px; }
+mat-card-footer > p { font-size: 12px; }
