@@ -91,12 +91,13 @@ export class ModalComponent {
 		this._service.getFuncionarios().subscribe(result => this._funcionarios = result);
 	}
 
-	save(): void {
-		if (true) {
-			this.snackBar.open('ok', 'Fechar', { duration: 2000, });
-		} else {
-			this.snackBar.open('no', 'Fechar', { duration: 2000, });
-		}
+	onSubmit(form): void {
+		console.log( form );
+		// if (true) {
+		// 	this.snackBar.open('ok', 'Fechar', { duration: 2000, });
+		// } else {
+		// 	this.snackBar.open('no', 'Fechar', { duration: 2000, });
+		// }
 	}
 
 	close(): void { this.dialogRef.close(); }

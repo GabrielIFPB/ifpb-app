@@ -1,55 +1,55 @@
-<mat-card>
-	<mat-card-header>
-		<div mat-card-avatar><mat-icon>assignment</mat-icon></div>
-		<mat-card-title class="title">Cadastrar Edital</mat-card-title>
-		<!-- <mat-card-subtitle>Publicos</mat-card-subtitle> -->
-	</mat-card-header>
-	<mat-card-content>
-		<form #form="ngForm">
-			<mat-form-field>
-				<input matInput placeholder="Nome" [(ngModel)]="_name" required>
-			</mat-form-field>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	<mat-card>
+		<mat-card-header>
+			<div mat-card-avatar><mat-icon>assignment</mat-icon></div>
+			<mat-card-title class="title">Cadastrar Edital</mat-card-title>
+			<!-- <mat-card-subtitle>Publicos</mat-card-subtitle> -->
+		</mat-card-header>
+		<mat-card-content>
+				<mat-form-field>
+					<input matInput placeholder="Nome" required>
+				</mat-form-field>
 
-			<mat-form-field>
-				<input matInput type="number" placeholder="Cotas" required>
-			</mat-form-field>
+				<mat-form-field>
+					<input matInput type="number" placeholder="Cotas" required>
+				</mat-form-field>
 
-			<mat-form-field>
-				<mat-select required [(ngModel)]="_option">
-					<mat-option *ngFor="let option of _options" [value]="option">{{ option }}</mat-option>
-				</mat-select>
-				<mat-label> <b> Evento</b> </mat-label>
-			</mat-form-field>
-			
-			<mat-form-field>
-				<mat-select required [(ngModel)]="_funcionario">
-					<mat-option *ngFor="let funcionario of _funcionarios" [value]="funcionario.id">{{ funcionario.name }}</mat-option>
-				</mat-select>
-				<mat-label> <b> Responsável</b> <i> pelo edital</i></mat-label>
-			</mat-form-field>
+				<mat-form-field>
+					<mat-select required >
+						<mat-option *ngFor="let option of _options" [value]="option">{{ option }}</mat-option>
+					</mat-select>
+					<mat-label> <b> Evento</b> </mat-label>
+				</mat-form-field>
+				
+				<mat-form-field>
+					<mat-select required >
+						<mat-option *ngFor="let funcionario of _funcionarios" [value]="funcionario.id">{{ funcionario.name }}</mat-option>
+					</mat-select>
+					<mat-label> <b> Responsável</b> <i> pelo edital</i></mat-label>
+				</mat-form-field>
 
-			<mat-form-field>
-				<mat-select required [(ngModel)]="_campi">
-					<mat-option *ngFor="let campi of _campus" [value]="campi.id">{{ campi.sigla }} - {{ campi.cidade }}</mat-option>
-				</mat-select>
-				<mat-label> <b> Campus</b> <i> do curso</i></mat-label>
-			</mat-form-field>
+				<mat-form-field>
+					<mat-select required >
+						<mat-option *ngFor="let campi of _campus" [value]="campi.id">{{ campi.sigla }} - {{ campi.cidade }}</mat-option>
+					</mat-select>
+					<mat-label> <b> Campus</b> <i> do curso</i></mat-label>
+				</mat-form-field>
 
-			<mat-form-field>
-				<input matInput [matDatepicker]="di" placeholder="Data início">
-				<mat-datepicker-toggle matSuffix [for]="di"></mat-datepicker-toggle>
-				<mat-datepicker #di></mat-datepicker>
-			</mat-form-field>
+				<mat-form-field>
+					<input matInput [matDatepicker]="di" placeholder="Data início">
+					<mat-datepicker-toggle matSuffix [for]="di"></mat-datepicker-toggle>
+					<mat-datepicker #di></mat-datepicker>
+				</mat-form-field>
 
-			<mat-form-field>
-				<input matInput [matDatepicker]="df" placeholder="Data final">
-				<mat-datepicker-toggle matSuffix [for]="df"></mat-datepicker-toggle>
-				<mat-datepicker #df></mat-datepicker>
-			</mat-form-field>
-		</form>
-	</mat-card-content>
-	<mat-card-actions>
-		<button mat-button (click)="close()">Fechar</button>
-		<button mat-button (click)="save()">Salvar</button>
-	</mat-card-actions>
-</mat-card>
+				<mat-form-field>
+					<input matInput [matDatepicker]="df" placeholder="Data final">
+					<mat-datepicker-toggle matSuffix [for]="df"></mat-datepicker-toggle>
+					<mat-datepicker #df></mat-datepicker>
+				</mat-form-field>
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-button (click)="close()">Fechar</button>
+			<button mat-button type="submit" >Salvar</button>
+		</mat-card-actions>
+	</mat-card>
+</form>
