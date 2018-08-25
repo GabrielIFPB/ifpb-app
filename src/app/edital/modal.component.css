@@ -6,3 +6,10 @@ mat-card{
 mat-form-field{ width: 100%; }
 #sim{ margin-right: 5px; }
 #mat-input-1{ height: 15px; }
+
+.mat-snack-bar-container {
+    background: #ff0d0dcc;
+    color: rgb(0, 0, 0);
+}
+
+/* .red{ background-color: red; } */

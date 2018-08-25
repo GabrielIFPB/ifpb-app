@@ -11,6 +11,7 @@ export interface Edital {
 	evento: Evento
 	responsavel: any
 	cota: number
-	dataInsercao: string
+	created_on: string
+	updated_on: string
 	ativo: boolean
 }
