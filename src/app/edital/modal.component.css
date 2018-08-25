@@ -1,3 +1,15 @@
-mat-form-field{width: 100%;}
-#sim{margin-right: 5px;}
-#mat-input-1{height: 15px;}
+mat-card{ 
+    margin-bottom: 12px;
+    border: 1px solid #CCC;
+    box-shadow: 2px 2px 5px #666;
+}
+mat-form-field{ width: 100%; }
+#sim{ margin-right: 5px; }
+#mat-input-1{ height: 15px; }
+
+.mat-snack-bar-container {
+    background: #ff0d0dcc;
+    color: rgb(0, 0, 0);
+}
+
+/* .red{ background-color: red; } */

@@ -8,6 +8,7 @@ import { EditalService } from './edital.service';
 import { Edital } from './edital';
 import { Campus } from '../campus/campus';
 import { Funcionario } from '../funcionario/funcionario';
+import { switchAll } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-edital',
@@ -40,7 +41,7 @@ export class EditalComponent implements OnInit {
 
 	openDialog(): void {
 		let dialogRef = this.dialog.open(ModalComponent, {
-			width: '400px',
+			width: '500px',
 			height: '450px',
 			data: {}
 		});
@@ -74,6 +75,8 @@ export class EditalComponent implements OnInit {
 })
 export class ModalComponent {
 
+	private _expression: string = `[a-zA-Z ']*`;
+	private _edital: Edital;
 	private _name: string = null;
 	private _cota: number = null;
 	private _campi: number = null;
@@ -85,17 +88,19 @@ export class ModalComponent {
 	private _options: string[] = ['Aula de reposição', 'Refeições'];
 
 	constructor(private _service: EditalService, 
-			public dialogRef: MatDialogRef<ModalComponent>, 
-			@Inject(MAT_DIALOG_DATA) public data: Edital, public snackBar: MatSnackBar, private adapter: DateAdapter<any>) {
+				public dialogRef: MatDialogRef<ModalComponent>, 
+				@Inject(MAT_DIALOG_DATA) public data: Edital,
+				public snackBar: MatSnackBar, private adapter: DateAdapter<any>) {
 		this._service.getCampus().subscribe(result => this._campus = result);
 		this._service.getFuncionarios().subscribe(result => this._funcionarios = result);
 	}
 
-	save(): void {
+	onSubmit(form): void {
+		console.log( form );
 		if (true) {
-			this.snackBar.open('ok', 'Fechar', { duration: 2000, });
+			this.snackBar.open('ok', 'Fechar', { duration: 200000, panelClass: 'red' });
 		} else {
-			this.snackBar.open('no', 'Fechar', { duration: 2000, });
+			this.snackBar.open('no', 'Fechar', { duration: 2000, panelClass: '' });
 		}
 	}
 
