@@ -75,7 +75,7 @@ export class EditalComponent implements OnInit {
 })
 export class ModalComponent {
 
-	private _expression: string = `[a-zA-Z ']*`;
+	private _expression: string = `[A-Za-z 'áéíóúâêîôû]*`;
 	private _edital: Edital;
 	private _name: string = null;
 	private _cota: number = null;
