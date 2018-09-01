@@ -8,7 +8,6 @@ import { EditalService } from './edital.service';
 import { Edital } from './edital';
 import { Campus } from '../campus/campus';
 import { Funcionario } from '../funcionario/funcionario';
-import { switchAll } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-edital',
@@ -73,9 +72,12 @@ export class EditalComponent implements OnInit {
 		{provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
 	  ],
 })
+
 export class ModalComponent {
 
-	private _expression: string = `[A-Za-z 'áéíóúâêîôû]*`;
+	// /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+	private _expression: string = `[A-Za-z 'çÂãÕõáéíóúâêîôû]*`;
+	private _error: any;
 	private _edital: Edital;
 	private _name: string = null;
 	private _cota: number = null;
@@ -97,8 +99,12 @@ export class ModalComponent {
 
 	onSubmit(form): void {
 		console.log( form );
-		if (true) {
-			this.snackBar.open('ok', 'Fechar', { duration: 200000, panelClass: 'red' });
+		console.log( form.submitted );
+		console.log( form.form.value.edital );
+		if (form.form.status == "VALID") {
+			this._service.add(form.form.value.edital)
+				.subscribe(result => this._edital = result, error => this._error = error);
+			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 200000, panelClass: 'red' });
 		} else {
 			this.snackBar.open('no', 'Fechar', { duration: 2000, panelClass: '' });
 		}

@@ -39,6 +39,6 @@ import { MaterialAppModule } from './material.app.module';
         MaterialAppModule
     ],
     providers: [  ],
-    bootstrap: [ AppComponent ]
+    bootstrap: [ AppComponent ],
 })
 export class AppModule { }

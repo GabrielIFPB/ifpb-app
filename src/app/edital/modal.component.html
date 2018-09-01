@@ -1,3 +1,4 @@
+{{ form.value | json }}
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
 	<mat-card>
 		<mat-card-header>
@@ -5,27 +6,24 @@
 			<mat-card-title class="title">Cadastrar Edital</mat-card-title>
 			<!-- <mat-card-subtitle>Publicos</mat-card-subtitle> -->
 		</mat-card-header>
-		<mat-card-content>
+		<mat-card-content ngModelGroup="edital">
 				<mat-form-field>
 					<input #name matInput placeholder="Nome" name="name" required [(ngModel)]="_name" pattern="{{_expression}}">
-					<!-- <mat-error *ngFor="let validation of validation_messages.fullname">
-						<mat-error class="error-message" *ngIf="userDetailsForm.get('fullname').hasError(validation.type) && (userDetailsForm.get('fullname').dirty || userDetailsForm.get('fullname').touched)">{{validation.message}}</mat-error>
-					</mat-error> -->
 				</mat-form-field>
 
 				<mat-form-field>
-					<input matInput type="number" placeholder="Cotas" name="cotas" required ngModel>
+					<input matInput type="cota" placeholder="Cotas" name="cotas" required ngModel>
 				</mat-form-field>
 
 				<mat-form-field>
-					<mat-select required name="option" ngModel>
+					<mat-select required name="evento" ngModel>
 						<mat-option *ngFor="let option of _options" [value]="option">{{ option }}</mat-option>
 					</mat-select>
 					<mat-label> <b> Evento</b> </mat-label>
 				</mat-form-field>
 				
 				<mat-form-field>
-					<mat-select required name="funcionario" ngModel>
+					<mat-select required name="responsavel" ngModel>
 						<mat-option *ngFor="let funcionario of _funcionarios" [value]="funcionario.id">{{ funcionario.name }}</mat-option>
 					</mat-select>
 					<mat-label> <b> Responsável</b> <i> pelo edital</i></mat-label>
@@ -39,13 +37,13 @@
 				</mat-form-field>
 
 				<mat-form-field>
-					<input matInput name="inicio" [matDatepicker]="di" placeholder="Data início" required ngModel>
+					<input matInput name="dataInicial" [matDatepicker]="di" placeholder="Data início" required ngModel>
 					<mat-datepicker-toggle matSuffix [for]="di"></mat-datepicker-toggle>
 					<mat-datepicker #di></mat-datepicker>
 				</mat-form-field>
 
 				<mat-form-field>
-					<input matInput name="fim" [matDatepicker]="df" placeholder="Data final" required ngModel>
+					<input matInput name="dataFinal" [matDatepicker]="df" placeholder="Data final" required ngModel>
 					<mat-datepicker-toggle matSuffix [for]="df"></mat-datepicker-toggle>
 					<mat-datepicker #df></mat-datepicker>
 				</mat-form-field>
@@ -55,4 +53,7 @@
 			<button mat-button type="submit" [disabled]="!form.valid" >Salvar</button>
 		</mat-card-actions>
 	</mat-card>
+	
+	<!-- <app-form-debug form="form"></app-form-debug> -->
+
 </form>
