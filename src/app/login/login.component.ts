@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
 	selector: 'app-login',
@@ -7,21 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-	private _username: string = '';
-	private _password: string = '';
 	private _hide: boolean = true;
 
-	constructor() { }
+	constructor(public snackBar: MatSnackBar) { }
 
 	ngOnInit() {
 	}
 
-	submit(): void {
-		if (this._password && this._username) {
-			console.log(this._username);
-			console.log(this._password);
+	onSubmit(form): void {
+		if (true) {
+
 		} else {
-			console.log('no!');
+			this.snackBar.open('Erro ao salvar', 'Fechar', { duration: 2000, panelClass: '' });
 		}
 	}
 
