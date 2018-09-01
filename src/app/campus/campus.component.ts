@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 import { CampusService } from './campus.service';
 import { Campus } from './campus';
@@ -58,26 +58,20 @@ export class CampusComponent implements OnInit {
 })
 export class ModalComponent {
 
-	private _ativo: boolean = null;
-	private _cidade: string = '';
-	private _sigla: string = '';
+	private _expression: string = `[A-Za-z '-çÂãÕõáéíóúâêîôû]*`;
 	private _campus: Campus;
-	private _error: string = '';
+	private _error: any;
 
-	constructor(private _service: CampusService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Campus) { }
+	constructor(private _service: CampusService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Campus, public snackBar: MatSnackBar) { }
 
-	save(): void {
-		let campus = {
-			id: null,
-			sigla: this._sigla,
-			cidade: this._cidade,
-			dataInsercao: null,
-			ativo: this._ativo
-		};
-		if (this._sigla && this._cidade && this._ativo) {
-			this._service.add(campus).subscribe(result => this._campus = result, error => this._error = error);
+	onSubmit(form): void {
+		let campi = form.form.value.campi;
+		if (form.form.status == "VALID" && campi.ativo) {
+			this._service.add(campi)
+				.subscribe(result => this._campus = result, error => this._error = error);
+			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 200000, panelClass: 'red' });
 		} else {
-
+			this.snackBar.open('Erro ao salvar', 'Fechar', { duration: 2000, panelClass: '' });
 		}
 	}
 

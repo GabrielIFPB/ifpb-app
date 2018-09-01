@@ -74,8 +74,8 @@ export class CampusService {
 		let url = `${this._url}?q=${name}`;
 		return this._http.get<Campus[]>(url)
 			.pipe(
-				tap(() => console.log('Fetched edital!')),
-				catchError(this._handleError('Erro search edital!', []))
+				tap(() => console.log('Fetched campus!')),
+				catchError(this._handleError('Erro search campus!', []))
 			);
 	}
 }

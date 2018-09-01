@@ -82,7 +82,6 @@ export class ModalComponent {
 	private _campus: Campus[];
 	private _funcionarios: Funcionario[];
 
-	private _option: string = '';
 	private _options: string[] = ['Aula de reposição', 'Refeições'];
 
 	constructor(private _service: EditalService, 
