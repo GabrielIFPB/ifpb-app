@@ -8,11 +8,11 @@
 		</mat-card-header>
 		<mat-card-content ngModelGroup="edital">
 				<mat-form-field>
-					<input #name matInput placeholder="Nome" name="name" required pattern="{{_expression}}">
+					<input #name matInput placeholder="Nome" name="name" ngModel required pattern="{{_expression}}">
 				</mat-form-field>
 
 				<mat-form-field>
-					<input matInput type="cota" placeholder="Cotas" name="cotas" required ngModel>
+					<input matInput type="number" placeholder="Cotas" name="cotas" required ngModel>
 				</mat-form-field>
 
 				<mat-form-field>
