@@ -1,54 +1,63 @@
-<mat-card>
-	<mat-card-header>
-		<div mat-card-avatar><mat-icon>assignment</mat-icon></div>
-		<mat-card-title class="title">Cadastrar Curso</mat-card-title>
-		<!-- <mat-card-subtitle>Publicos</mat-card-subtitle> -->
-	</mat-card-header>
-	<mat-card-content>
-		<mat-form-field>
-			<input matInput placeholder="Nome" [(ngModel)]="_name" required >
-		</mat-form-field>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	<mat-card>
+		<mat-card-header>
+			<div mat-card-avatar><mat-icon>assignment</mat-icon></div>
+			<mat-card-title class="title">Cadastrar Curso</mat-card-title>
+			<!-- <mat-card-subtitle>Publicos</mat-card-subtitle> -->
+		</mat-card-header>
+		<mat-card-content ngModelGroup="funcionario">
+			<mat-form-field>
+				<input #name matInput placeholder="Nome" name="name" required [(ngModel)]="_name" pattern="{{_expression}}">
+			</mat-form-field>
 
-		<mat-form-field>
-			<input matInput placeholder="CPF" [(ngModel)]="_cpf" required>
-		</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="CPF" [(ngModel)]="_cpf" name="cpf" required ngModel>
+			</mat-form-field>
 
-		<mat-form-field>
-			<input matInput type="email" placeholder="E-mail" [(ngModel)]="_email" required email>
-		</mat-form-field>
+			<mat-form-field>
+				<input matInput type="email" placeholder="E-mail" [(ngModel)]="_email" name="email" required ngModel email>
+			</mat-form-field>
 
-		<mat-form-field>
-			<input matInput placeholder="Enter your password" [type]="_hidePasswd ? 'password' : 'text'" required>
-			<mat-icon matSuffix (click)="_hidePasswd = !_hidePasswd">{{_hidePasswd ? 'visibility' : 'visibility_off'}}</mat-icon>
-		</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Enter your password" [type]="_hidePasswd ? 'password' : 'text'" name="password" required ngModel>
+				<mat-icon matSuffix (click)="_hidePasswd = !_hidePasswd">{{_hidePasswd ? 'visibility' : 'visibility_off'}}</mat-icon>
+			</mat-form-field>
 
-		<mat-form-field>
-			<input matInput placeholder="Confirm your password" [type]="_hidePasswdConf ? 'password' : 'text'" required>
-			<mat-icon matSuffix (click)="_hidePasswdConf = !_hidePasswdConf">{{_hidePasswdConf ? 'visibility' : 'visibility_off'}}</mat-icon>
-		</mat-form-field>
+			<!-- <mat-form-field>
+				<input matInput placeholder="Confirm your password" [type]="_hidePasswdConf ? 'password' : 'text'" name="password" required ngModel>
+				<mat-icon matSuffix (click)="_hidePasswdConf = !_hidePasswdConf">{{_hidePasswdConf ? 'visibility' : 'visibility_off'}}</mat-icon>
+			</mat-form-field> -->
 
-		<mat-form-field>
-			<mat-select required [(ngModel)]="_campi">
-				<mat-option *ngFor="let setor of _setores" [value]="setor">{{ setor }}</mat-option>
-			</mat-select>
-			<mat-label><mat-icon>favorite</mat-icon> <b> Setor</b> <i> do funcionário</i></mat-label>
-		</mat-form-field>
+			<mat-form-field>
+				<mat-select name="type" required ngModel>
+					<mat-option *ngFor="let type of _types" [value]="type">{{ type }}</mat-option>
+				</mat-select>
+				<mat-label> <b> Tipo</b> <i> do funcionário</i></mat-label>
+			</mat-form-field>
 
-		<mat-form-field>
-			<mat-select required [(ngModel)]="_campi">
-				<mat-option *ngFor="let campi of _campus" [value]="campi.id">{{ campi.sigla }} - {{ campi.cidade }}</mat-option>
-			</mat-select>
-			<mat-label><mat-icon>favorite</mat-icon> <b> Campus</b> <i> do funcionário</i></mat-label>
-		</mat-form-field>
+			<mat-form-field>
+				<mat-select name="setor" required ngModel>
+					<mat-option *ngFor="let setor of _setores" [value]="setor">{{ setor }}</mat-option>
+				</mat-select>
+				<mat-label> <b> Setor</b> <i> do funcionário</i></mat-label>
+			</mat-form-field>
 
-		<label>Atvio: </label>
-		<mat-radio-group [(ngModel)]="_ativo" required>
-			<mat-radio-button value="true" id="sim">Sim</mat-radio-button>
-			<mat-radio-button value="false">Não</mat-radio-button>
-		</mat-radio-group>
-	</mat-card-content>
-	<mat-card-actions>
-		<button mat-button (click)="close()">Fechar</button>
-		<button mat-button (click)="save()">Salvar</button>
-	</mat-card-actions>
-</mat-card>
+			<mat-form-field>
+				<mat-select name="campi" required ngModel>
+					<mat-option *ngFor="let campi of _campus" [value]="campi.id">{{ campi.sigla }} - {{ campi.cidade }}</mat-option>
+				</mat-select>
+				<mat-label> <b> Campus</b> <i> do funcionário</i></mat-label>
+			</mat-form-field>
+
+			<label>Atvio: </label>
+			<mat-radio-group name="ativo" required ngModel>
+				<mat-radio-button value="true" id="sim">Sim</mat-radio-button>
+				<mat-radio-button value="false">Não</mat-radio-button>
+			</mat-radio-group>
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-button type="button" (click)="close()">Fechar</button>
+			<button mat-button type="submit" [disabled]="form.valid" >Salvar</button>
+		</mat-card-actions>
+	</mat-card>
+</form>

@@ -56,12 +56,7 @@ export class FuncionarioComponent implements OnInit {
 })
 export class ModalComponent {
 
-	private _name: string = null;
-	private _cpf: string = null;
-	private _email: string = null;
-	private _campi: number = null;
-	private _ativo: boolean = true;
-	private _setor: string = null;
+	private _expression: string = `[A-Za-z 'çÂãÕõáéíóúâêîôû]*`;
 	private _error: any;
 	private _campus: Campus[];
 	private _funcionario: Funcionario;
@@ -76,6 +71,11 @@ export class ModalComponent {
 		'Coordenação de informática',
 	];
 
+	private _types: Array<string> = [
+		'Professor',
+		'Técnico Administrativo'
+	];
+
 	//TODO: Tipo do funcionário: Professor, Técnico Administrativo.
 
 	constructor(private _service: FuncionarioService,
@@ -86,34 +86,15 @@ export class ModalComponent {
 		this._service.getCampus().subscribe(result => this._campus = result);
 	}
 
-	onKeyUp(event: KeyboardEvent): boolean {
-		let value = (<HTMLInputElement>event.target).value;
-		let numbers = ['1', '2', '3'];
-		if (value[value.length - 1] == '1') return true;
-		console.log(value[value.length - 1]);
-
-		console.log(typeof value.charCodeAt(value.length - 1));
-		console.log((<HTMLInputElement>event.target).value);
-		return;
-	}
-
-	save(): void {
-		let funcionario = {
-			id: null,
-			name: this._name,
-			cpf: this._cpf,
-			email: this._email,
-			campi: this._campi,
-			type: -1,
-			dataInsercao: null,
-			dateUpdate: null,
-			setor: null,
-			password: null,
-			ativo: this._ativo
+	onSubmit(form): void {
+		let funcionario = form.form.value.funcionario;
+		if (form.form.status == "VALID" && funcionario.ativo != '') {
+			this._service.add(funcionario)
+				.subscribe(result => this._funcionario = result, error => this._error = error);
+			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 2000, });
+		} else {
+			this.snackBar.open('Erro ao salvar', 'Fechar', { duration: 2000, panelClass: '' });
 		}
-		this._service.add(funcionario)
-			.subscribe(result => this._funcionario = result, error => this._error = error);
-		this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 2000, });
 	}
 
 	close(): void { this.dialogRef.close(); }

@@ -1,6 +1,6 @@
-import { Pessoa } from './Pessoa';
+import { Pessoa } from '../models/Pessoa';
 import { Curso } from '../curso/curso';
-import { Arquivo } from './Arquivo';
+import { Arquivo } from '../models/Arquivo';
 
 export interface Aluno extends Pessoa {
 	matricula: string
