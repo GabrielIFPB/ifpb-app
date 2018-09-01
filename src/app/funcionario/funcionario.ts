@@ -8,4 +8,5 @@ export interface Setor {
 export interface Funcionario extends Pessoa {
 	setor: String
 	password: string
+	type: number
 }

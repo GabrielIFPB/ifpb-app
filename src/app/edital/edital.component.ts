@@ -79,10 +79,6 @@ export class ModalComponent {
 	private _expression: string = `[A-Za-z 'çÂãÕõáéíóúâêîôû]*`;
 	private _error: any;
 	private _edital: Edital;
-	private _name: string = null;
-	private _cota: number = null;
-	private _campi: number = null;
-	private _funcionario: number = null;
 	private _campus: Campus[];
 	private _funcionarios: Funcionario[];
 
@@ -98,15 +94,12 @@ export class ModalComponent {
 	}
 
 	onSubmit(form): void {
-		console.log( form );
-		console.log( form.submitted );
-		console.log( form.form.value.edital );
 		if (form.form.status == "VALID") {
 			this._service.add(form.form.value.edital)
 				.subscribe(result => this._edital = result, error => this._error = error);
 			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 200000, panelClass: 'red' });
 		} else {
-			this.snackBar.open('no', 'Fechar', { duration: 2000, panelClass: '' });
+			this.snackBar.open('Erro ao salvar', 'Fechar', { duration: 2000, panelClass: '' });
 		}
 	}
 
