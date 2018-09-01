@@ -1,4 +1,4 @@
-import { Aluno } from './Aluno';
+import { Aluno } from '../aluno/aluno';
 import { Curso } from '../curso/curso';
 import { Turno } from './Turno';
 import { Periodo } from './Periodo';
