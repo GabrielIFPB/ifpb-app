@@ -11,6 +11,7 @@ import { Campus } from './campus';
 })
 export class CampusComponent implements OnInit {
 
+	private _name: string = null;
 	private _campus: Campus[];
 
 	displayedColumns: string[] = ['id', 'sigla', 'cidade', 'data', 'ativo', 'edit'];
@@ -19,20 +20,17 @@ export class CampusComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
-	constructor(private _service: CampusService, private dialog: MatDialog) {
-		this.dataSource = new MatTableDataSource(this._campus);
-		this._service.getCampus().subscribe(result => this.dataSource.data = result);
-		this.dataSource.paginator = this.paginator;
-		this.dataSource.sort = this.sort;
-	}
+	constructor(private _service: CampusService, private dialog: MatDialog) { }
 
 	rowClicked(row: any): void { console.log(row); }
 
 	ngOnInit() { }
 
-	applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
-		if (this.dataSource.paginator) { this.dataSource.paginator.firstPage(); }
+	search() {
+		this.dataSource = new MatTableDataSource(this._campus);
+		this._service.getCampiByName(this._name.trim().toLowerCase()).subscribe(result => this.dataSource.data = result);
+		this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
 	}
 
 	openDialog(): void {
@@ -45,6 +43,11 @@ export class CampusComponent implements OnInit {
 		dialogRef.afterClosed().subscribe(result => {
 			console.log('The dialog was closed');
 		});
+	}
+
+	clear(): void {
+		this._name = '';
+		this.dataSource.data = [];
 	}
 }
 

@@ -69,12 +69,13 @@ export class CampusService {
 			);
 	}
 
-	searchAluno(str: String): Observable<Campus[]> {
-		if (!str.trim()) return of([]);
-		return this._http.get<Campus[]>(this._url)
+	getCampiByName(name: String): Observable<Campus[]> {
+		if (!name.trim()) return of([]);
+		let url = `${this._url}?q=${name}`;
+		return this._http.get<Campus[]>(url)
 			.pipe(
-				tap(() => console.log('Fetched Campus!')),
-				catchError(this._handleError('searchCampus', []))
+				tap(() => console.log('Fetched edital!')),
+				catchError(this._handleError('Erro search edital!', []))
 			);
 	}
 }
