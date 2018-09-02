@@ -39,13 +39,18 @@
 				<!-- Ativo Column -->
 				<ng-container matColumnDef="ativo">
 					<th mat-header-cell *matHeaderCellDef mat-sort-header> Ativo </th>
-					<td mat-cell *matCellDef="let row"> {{ row.ativo }} </td>
+					<td mat-cell *matCellDef="let row"> 
+						<!-- <mat-icon svgIcon="thumb_up"></mat-icon>  -->
+						<!-- <mat-icon svgIcon="left-arrow"></mat-icon>  -->
+						<!-- <mat-icon svgIcon="animals:cat"></mat-icon> -->
+						<i class="material-icons">{{ row.ativo ? 'thumb_up' : 'thumb_down' }}</i>
+					</td>
 				</ng-container>
 
 				<!-- Edit Column -->
 				<ng-container matColumnDef="edit">
-					<th mat-header-cell *matHeaderCellDef > Editar </th>
-					<td mat-cell *matCellDef="let row"><a routerLink="." matTooltip="Editar"><mat-icon>edit</mat-icon></a></td>
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Editar </th>
+					<td mat-cell *matCellDef="let row"><a routerLink="." matTooltip="Editar"><button mat-button><mat-icon>edit</mat-icon></button></a></td>
 				</ng-container>
 			
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
