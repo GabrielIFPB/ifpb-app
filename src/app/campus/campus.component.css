@@ -20,10 +20,10 @@ mat-card{
     position: relative;
 }
 
-mat-icon{
+/* mat-icon{
 	width: 50px;
 	margin-right: 25px;
-}
+} */
 
 .title{text-align: center; font-size: 18px;}
 .marge1{margin-left: 7px;}

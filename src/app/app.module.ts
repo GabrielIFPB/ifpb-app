@@ -15,6 +15,7 @@ import { CampusModule } from './campus/campus.module';
 import { CursoModule } from './curso/curso.module';
 import { FuncionarioModule } from './funcionario/funcionario.module';
 import { RefeicaoModule } from './refeicao/refeicao.module';
+import { AlunoModule } from './aluno/aluno.module';
 
 import { AppRouting } from './routes/app-routing.module';
 import { MaterialAppModule } from './material.app.module';
@@ -34,6 +35,7 @@ import { MaterialAppModule } from './material.app.module';
         CursoModule,
         FuncionarioModule,
         RefeicaoModule,
+        AlunoModule,
         AppRouting,
         BrowserAnimationsModule,
         MaterialAppModule
