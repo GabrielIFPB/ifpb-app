@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
 		selector: 'app-panel',
-		templateUrl: '../views/panel.html',
-		styleUrls: ['../css/panel.css']
+		templateUrl: './panel.html',
+		styleUrls: ['./panel.css']
 })
 export class PanelControll implements OnInit {
 	shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));

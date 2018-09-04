@@ -6,10 +6,10 @@ import { HttpClientModule } from '@angular/common/http'; // usar nos modulos que
 // HttpClientModule está em uso global
 
 import { AppComponent } from './app.component';
-import { Home } from './controllers/HomeControll';
+import { Home } from './home/HomeControll';
 
 import { LoginModule } from './login/login.module';
-import { PanelModule } from './modules/Panel.module';
+import { PanelModule } from './setting/Panel.module';
 import { EditalModule } from './edital/edital.module';
 import { CampusModule } from './campus/campus.module';
 import { CursoModule } from './curso/curso.module';
@@ -17,7 +17,7 @@ import { FuncionarioModule } from './funcionario/funcionario.module';
 import { RefeicaoModule } from './refeicao/refeicao.module';
 import { AlunoModule } from './aluno/aluno.module';
 
-import { AppRouting } from './routes/app-routing.module';
+import { AppRouting } from './app-routing.module';
 import { MaterialAppModule } from './material.app.module';
 
 @NgModule({

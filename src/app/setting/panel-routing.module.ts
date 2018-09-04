@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PanelControll } from '../controllers/PanelControll';
+import { PanelControll } from './PanelControll';
 
 const routes: Routes = [
 	{ path: 'panel', component: PanelControll }
