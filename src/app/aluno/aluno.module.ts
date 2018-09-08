@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AlunoComponent } from './aluno.component';
 import { AlunoRoutingModule } from './aluno-routing.module';
 import { MaterialAlunoModule } from './aluno.material.module';
+import { AlunoService } from './aluno.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { MaterialAlunoModule } from './aluno.material.module';
   ],
   declarations: [ AlunoComponent ],
 	entryComponents: [  ],
-	providers: [  ]
+	providers: [ AlunoService ]
 })
 export class AlunoModule { }
