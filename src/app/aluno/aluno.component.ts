@@ -62,6 +62,7 @@ export class ModalComponent {
 
 	private _expression: string = `[A-Za-z '-çÂãÕõáéíóúâêîôû]*`;
 	private _exprNumber: string = `[0-9]*`;
+	private _exprcpf: string = `[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}`;
 	private _aluno: Aluno;
 	private _error: any;
 	private _campus: Campus[];
@@ -73,12 +74,41 @@ export class ModalComponent {
 		'Noturno'
 	];
 
+	private _periodos: Array<string> = [
+		'1 º',
+		'2 º',
+		'3 º',
+		'4 º',
+		'5 º',
+		'6 º',
+		'7 º',
+		'8 º',
+		'9 º',
+		'10 º',
+	];
+
+	private _turmas: Array<string> = [
+		'A',
+		'B',
+		'C',
+		'D',
+		'E',
+	];
+
 	constructor(private _service: AlunoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Aluno, public snackBar: MatSnackBar) {
 		this._service.getCampus().subscribe(result => this._campus = result);
 		this._service.getCursos().subscribe(result => this._cursos = result);
 	}
 
-	onSubmit(form): void {}
+	onSubmit(form): void {
+		if (form.form.status == "VALID") {
+			this._service.add(form.form.value.aluno)
+				.subscribe(result => this._aluno = result, error => this._error = error);
+			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 200000, panelClass: 'green' });
+		} else {
+			this.snackBar.open('Erro ao salvar', 'Fechar', { duration: 2000, panelClass: 'red' });
+		}
+	}
 
 	close(): void { this.dialogRef.close(); }
 }

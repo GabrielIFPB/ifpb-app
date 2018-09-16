@@ -12,15 +12,15 @@
 			</mat-form-field>
 			
 			<mat-form-field>
-				<input #name matInput type="text" placeholder="Nome" name="name" required pattern="{{ _expression }}">
+				<input #name matInput type="text" placeholder="Nome" name="name" required ngModel pattern="{{ _expression }}">
 			</mat-form-field>
 
 			<mat-form-field>
-				<input matInput type="number" placeholder="CPF" name="cpf" required ngModel>
+				<input matInput placeholder="CPF" name="cpf" required ngModel pattern="{{ _exprcpf }}">
 			</mat-form-field>
 			
 			<mat-form-field>
-				<input matInput type="email" placeholder="E-mail" [(ngModel)]="_email" name="email" required ngModel email>
+				<input matInput type="email" placeholder="E-mail" name="email" required ngModel email>
 			</mat-form-field>
 
 			<mat-form-field>
@@ -38,13 +38,25 @@
 			</mat-form-field>
 
 			<mat-form-field>
+				<mat-select name="periodo" required ngModel>
+					<mat-option *ngFor="let periodo of _periodos" [value]="periodo">{{ periodo }}</mat-option>
+				</mat-select>
+				<mat-label> <b> Período</b> </mat-label>
+			</mat-form-field>
+
+			<mat-form-field>
 				<mat-select name="turno" required ngModel>
 					<mat-option *ngFor="let turno of _turnos" [value]="turno">{{ turno }}</mat-option>
 				</mat-select>
 				<mat-label> <b> Turno</b> </mat-label>
 			</mat-form-field>
 
-			
+			<mat-form-field>
+				<mat-select name="turma" required ngModel>
+					<mat-option *ngFor="let turma of _turmas" [value]="turma">{{ turma }}</mat-option>
+				</mat-select>
+				<mat-label> <b> Turma</b> </mat-label>
+			</mat-form-field>
             
         </mat-card-content>
         <mat-card-actions>
