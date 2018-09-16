@@ -3,6 +3,8 @@ import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT
 
 import { Aluno } from './aluno';
 import { AlunoService } from './aluno.service';
+import { Campus } from '../campus/campus';
+import { Curso } from '../curso/curso';
 
 @Component({
 	selector: 'app-aluno',
@@ -14,7 +16,7 @@ export class AlunoComponent implements OnInit {
 	private _name: string = null;
 	private _aluno: Aluno[];
 
-	displayedColumns: string[] = ['id', 'name', 'edit'];
+	displayedColumns: string[] = ['id', 'matricula', 'name', 'edit'];
 	dataSource: MatTableDataSource<Aluno>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -35,8 +37,8 @@ export class AlunoComponent implements OnInit {
 
 	openDialog(): void {
 		let dialogRef = this.dialog.open(ModalComponent, {
-			width: '400px',
-			height: '320px',
+			width: '450px',
+			height: '500px',
 			data: {}
 		});
 
@@ -59,10 +61,22 @@ export class AlunoComponent implements OnInit {
 export class ModalComponent {
 
 	private _expression: string = `[A-Za-z '-çÂãÕõáéíóúâêîôû]*`;
+	private _exprNumber: string = `[0-9]*`;
 	private _aluno: Aluno;
 	private _error: any;
+	private _campus: Campus[];
+	private _cursos: Curso[];
 
-	constructor(private _service: AlunoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Aluno, public snackBar: MatSnackBar) { }
+	private _turnos: Array<string> = [
+		'Matutino',
+		'Vespertino',
+		'Noturno'
+	];
+
+	constructor(private _service: AlunoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Aluno, public snackBar: MatSnackBar) {
+		this._service.getCampus().subscribe(result => this._campus = result);
+		this._service.getCursos().subscribe(result => this._cursos = result);
+	}
 
 	onSubmit(form): void {}
 
