@@ -41,6 +41,10 @@ export class FuncionarioComponent implements OnInit {
 			height: '500px',
 			data: {}
 		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			console.log('The dialog was closed');
+		});
 	}
 
 	limpar(): void {

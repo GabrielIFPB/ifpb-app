@@ -40,6 +40,10 @@ export class RefeicaoComponent implements OnInit {
 			height: '500px',
 			data: {}
 		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			console.log('The dialog was closed');
+		});
 	}
 
 	limpar(): void {
@@ -53,4 +57,17 @@ export class RefeicaoComponent implements OnInit {
 	templateUrl: './modal.component.html',
 	styleUrls: ['./modal.component.css']
 })
-export class ModalComponent {}
+export class ModalComponent {
+
+	private _campus: Campus[];
+
+	constructor(private _service: RefeicaoService, public snackBar: MatSnackBar, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Refeicao) {
+		this._service.getCampus().subscribe(result => this._campus = result);
+	}
+
+	onSubmit(form): void {
+		
+	}
+
+	close(): void { this.dialogRef.close(); }
+}
