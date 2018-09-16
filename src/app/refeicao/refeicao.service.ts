@@ -27,6 +27,14 @@ export class RefeicaoService {
 
 	constructor(private _http: HttpClient) { }
 
+	getCampus(): Observable<Campus[]> {
+		return this._http.get<Campus[]>(this._urlCampus)
+			.pipe(
+				tap(() => console.log('Fetched campus!')),
+				catchError(this._handleError('Erro ao buscar todos os campus', []))
+			);
+	}
+
 	getRefeicaoByName(name: String): Observable<Refeicao[]> {
 		if (!name.trim()) return of([]);
 		let url = `${this._url}?q=${name}`;
