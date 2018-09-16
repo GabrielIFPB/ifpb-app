@@ -5,6 +5,7 @@ import { catchError, tap } from 'rxjs/operators';
 
 import { Aluno } from './aluno';
 import { Campus } from '../campus/campus';
+import { Curso } from '../curso/curso';
 
 const httpOptions = {
 	headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -15,6 +16,7 @@ export class AlunoService {
 
 	private _url = 'http://localhost:3000/alunos';
 	private _urlCampus: string = 'http://localhost:3000/campus';
+	private _urlCursos: string = 'http://localhost:3000/cursos';
 
 	private _handleError<T>(operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
@@ -35,10 +37,18 @@ export class AlunoService {
 			);
 	}
 
+	getCursos(): Observable<Curso[]> {
+		return this._http.get<Curso[]>(this._urlCursos)
+			.pipe(
+				tap(() => console.log('Fetched cursos!!!')),
+				catchError(this._handleError('getCursos', []))
+			);
+	}
+
 	getCampus(): Observable<Campus[]> {
 		return this._http.get<Campus[]>(this._urlCampus)
 			.pipe(
-				tap(),
+				tap(() => console.log('Fetched campus!!!')),
 				catchError(this._handleError('getCampus', []))
 			);
 	}
