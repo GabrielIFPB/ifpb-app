@@ -1,9 +1,39 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+import { Refeicao } from './Refeicao';
+import { Campus } from '../campus/campus';
+
+const httpOptions = {
+	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+@Injectable()
 export class RefeicaoService {
 
-  constructor() { }
+	private _url: string = 'http://localhost:3000/refeicoes';
+	private _urlCampus: string = 'http://localhost:3000/campus';
+
+	private _handleError<T>(operation = 'operation', result?: T) {
+		return (error: any): Observable<T> => {
+			console.error(error);
+			console.error(error, `Operation: --> ${operation} <--`);
+			console.log(`${operation} failed: ${error.message}`);
+			return of(result as T)
+		}
+	}
+
+	constructor(private _http: HttpClient) { }
+
+	getRefeicaoByName(name: String): Observable<Refeicao[]> {
+		if (!name.trim()) return of([]);
+		let url = `${this._url}?q=${name}`;
+		return this._http.get<Refeicao[]>(url)
+			.pipe(
+				tap(() => console.log('Fetched Funcionario!')),
+				catchError(this._handleError('searchFuncionario', []))
+			);
+	}
 }
