@@ -15,7 +15,7 @@ export class RefeicaoComponent implements OnInit {
 	private _name: string = null;
 	private _refeicao: Refeicao[];
 
-	displayedColumns: string[] = ['id', 'name', 'ativo', 'edit'];
+	displayedColumns: string[] = ['id', 'name', 'edit'];
 	dataSource: MatTableDataSource<Refeicao>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
@@ -34,7 +34,7 @@ export class RefeicaoComponent implements OnInit {
 		this.dataSource.sort = this.sort;
 	}
 
-	cadastrarFuncionarioDialog(): void {
+	openDialog(): void {
 		let dialogRef = this.dialog.open(ModalComponent, {
 			width: '450px',
 			height: '500px',
@@ -46,19 +46,20 @@ export class RefeicaoComponent implements OnInit {
 		});
 	}
 
-	limpar(): void {
+	clear(): void {
 		this._name = '';
 		this.dataSource.data = [];
 	}
 }
 
 @Component({
-	selector: 'app-dialog1',
+	selector: 'app-dialog2',
 	templateUrl: './modal.component.html',
 	styleUrls: ['./modal.component.css']
 })
 export class ModalComponent {
 
+	private _expression: string = `[A-Za-z '-çÂãÕõáéíóúâêîôû]*`;
 	private _campus: Campus[];
 
 	constructor(private _service: RefeicaoService, public snackBar: MatSnackBar, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Refeicao) {
@@ -66,7 +67,12 @@ export class ModalComponent {
 	}
 
 	onSubmit(form): void {
-		
+		let refeicao = form.form.value.refeicao;
+		if (form.form.status == "VALID" && refeicao.ativo != '') {
+
+		} else {
+
+		}
 	}
 
 	close(): void { this.dialogRef.close(); }
