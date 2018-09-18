@@ -33,7 +33,7 @@ export class RefeicaoService {
 		return this._http.get<Aluno[]>(this._urlAlunos)
 			.pipe(
 				tap(_ => console.log('Fetched alunos!')),
-				catchError(this._handleError('', []))
+				catchError(this._handleError('Erro ao buscar todos os alunos', []))
 			);
 	}
 
