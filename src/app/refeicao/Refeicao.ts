@@ -3,7 +3,7 @@ export interface Refeicao {
     campi: any
     aluno: any
     custo: number
-    hourPretensão: string
+    hourPretensao: string
     dataInicial: string
 	dataFinal: string
 }

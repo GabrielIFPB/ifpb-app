@@ -18,6 +18,32 @@
 				<mat-label> <b> Campus</b> </mat-label>
 			</mat-form-field>
 
+			<mat-form-field>
+				<mat-select name="aluno" required ngModel>
+					<mat-option *ngFor="let aluno of _alunos" [value]="aluno.id">{{ aluno.name }}</mat-option>
+				</mat-select>
+				<mat-label> <b> Aluno</b> </mat-label>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput type="text" placeholder="Horário de inicial" name="dataInicial" required ngModel pattern="{{ _exprtime }}">
+				<mat-hint align="end"> <i>Formato: 12:30</i> </mat-hint>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput type="text" placeholder="Horário final" name="dataFinal" required ngModel pattern="{{ _exprtime }}">
+				<mat-hint align="end"> <i>Formato: 12:30</i> </mat-hint>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput placeholder="Custo" type="text" name="custo" required ngModel pattern="{{ _exprNumber }}">
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput placeholder="Horário de pretensão" type="text" name="hourPretensao" required ngModel pattern="{{ _exprtime }}">
+				<mat-hint align="end"> <i>Formato: 12:30</i> </mat-hint>
+			</mat-form-field>
+
 		</mat-card-content>
 		<mat-card-actions>
 			<button mat-button type="button" (click)="close()">Fechar</button>

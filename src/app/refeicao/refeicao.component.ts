@@ -4,6 +4,7 @@ import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT
 import { Refeicao } from './Refeicao';
 import { RefeicaoService } from './refeicao.service';
 import { Campus } from '../campus/campus'
+import { Aluno } from '../aluno/aluno';
 
 @Component({
 	selector: 'app-refeicao',
@@ -60,10 +61,14 @@ export class RefeicaoComponent implements OnInit {
 export class ModalComponent {
 
 	private _expression: string = `[A-Za-z '-çÂãÕõáéíóúâêîôû]*`;
+	private _exprNumber: string = `[0-9,]*`;
+	private _exprtime: string = `[0-9]{2}\:?[0-9]{2}`;
 	private _campus: Campus[];
+	private _alunos: Aluno[];
 
 	constructor(private _service: RefeicaoService, public snackBar: MatSnackBar, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Refeicao) {
 		this._service.getCampus().subscribe(result => this._campus = result);
+		this._service.getAlunos().subscribe(result => this._alunos = result);
 	}
 
 	onSubmit(form): void {
