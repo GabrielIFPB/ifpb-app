@@ -33,7 +33,7 @@ export class AlunoService {
 		return this._http.post<Aluno>(this._url, aluno, httpOptions)
 			.pipe(
 				tap(() => console.log('add aluno')),
-				catchError(this._handleError<Aluno>('ERROR: ADD CAMPUS'))
+				catchError(this._handleError<Aluno>('ERROR: ADD aluno'))
 			);
 	}
 

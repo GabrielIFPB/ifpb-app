@@ -29,6 +29,14 @@ export class RefeicaoService {
 
 	constructor(private _http: HttpClient) { }
 
+	add(refeicao: Refeicao): Observable<Refeicao> {
+		return this._http.post<Refeicao>(this._url, refeicao, httpOptions)
+			.pipe(
+				tap(() => console.log('add refeicao')),
+				catchError(this._handleError<Refeicao>('ERROR: ADD refeicao'))
+			);
+	} 
+
 	getAlunos(): Observable<Aluno[]> {
 		return this._http.get<Aluno[]>(this._urlAlunos)
 			.pipe(
