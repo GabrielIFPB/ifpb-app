@@ -3,7 +3,10 @@ import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT
 
 import { DiaRefeicaoService } from './diarefeicao.service';
 import { DiaRefeicao } from './diarefeicao';
+import { Refeicao } from '../refeicao/Refeicao';
 import { Aluno } from '../aluno/aluno';
+import { Edital } from '../edital/edital';
+import { Campus } from '../campus/campus'
 
 @Component({
 	selector: 'app-diarefeicao',
@@ -36,8 +39,8 @@ export class DiaRefeicaoComponent implements OnInit {
 
 	openDialog(): void {
 		let dialogRef = this.dialog.open(ModalComponent, {
-			width: '400px',
-			height: '350px',
+			width: '450px',
+			height: '400px',
 			data: {}
 		});
 
@@ -59,13 +62,26 @@ export class DiaRefeicaoComponent implements OnInit {
 })
 export class ModalComponent {
 
-	private _name: string = null;
-	private _nivel: number = null;
-	private _campi: number = null;
 	private _error: any;
+	private _alunos: Aluno[];
+	private _campus: Campus[];
+	private _refeicoes: Refeicao[];
+	private _editais: Edital[];
 
 	constructor(private _service: DiaRefeicaoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: DiaRefeicao, public snackBar: MatSnackBar) {
+		this._service.getAlunos().subscribe(result => this._alunos = result);
+		this._service.getCampus().subscribe(result => this._campus = result);
+		this._service.getEditais().subscribe(result => this._editais = result);
+		this._service.getRefeicoes().subscribe(result => this._refeicoes = result);
+	}
 
+	onSubmit(form): void {
+		let diarefeicao = form.form.value.diarefeicao;
+		if (form.form.status == "VALID") {
+
+		} else {
+
+		}
 	}
 
 	close(): void { this.dialogRef.close(); }

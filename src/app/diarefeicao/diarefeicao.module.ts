@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { DiaRefeicaoRoutingModule } from './diarefeicao-routing.module';
-import { DiaRefeicaoComponent } from './diarefeicao.component';
+import { DiaRefeicaoComponent, ModalComponent } from './diarefeicao.component';
 import { DiaRefeicaoService } from './diarefeicao.service';
 import { MaterialDiaRefeicaoCursoModule } from './diarefeicao.material.module';
 
@@ -14,8 +14,8 @@ import { MaterialDiaRefeicaoCursoModule } from './diarefeicao.material.module';
 		DiaRefeicaoRoutingModule,
 		MaterialDiaRefeicaoCursoModule
 	],
-	declarations: [ DiaRefeicaoComponent ],
-	entryComponents: [  ],
+	declarations: [ DiaRefeicaoComponent, ModalComponent ],
+	entryComponents: [ ModalComponent ],
 	providers: [ DiaRefeicaoService ]
 })
 export class DiaRefeicaoModule { }
