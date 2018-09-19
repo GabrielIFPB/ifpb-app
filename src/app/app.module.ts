@@ -19,6 +19,7 @@ import { AlunoModule } from './aluno/aluno.module';
 
 import { AppRouting } from './app-routing.module';
 import { MaterialAppModule } from './material.app.module';
+import { DiaRefeicaoModule } from './diarefeicao/diarefeicao.module';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import { MaterialAppModule } from './material.app.module';
         FuncionarioModule,
         RefeicaoModule,
         AlunoModule,
+        DiaRefeicaoModule,
         AppRouting,
         BrowserAnimationsModule,
         MaterialAppModule
