@@ -65,31 +65,26 @@ export class ModalComponent {
 	private _error: any;
 	private _curso: Curso;
 	private _campus: Campus[];
-	private _niveis: Array<Nivel> = [ 
-		{ id: 1, nivel: 'Integrado' },
-		{ id: 2, nivel: 'Subsequente' },
-		{ id: 3, nivel: 'Superior' },
-		{ id: 4, nivel: 'Pós graduação' } 
-	];
+	private _niveis: Array<string> = [ 'Integrado', 'Subsequente', 'Superior', 'Pós graduação' ];
 
 	constructor(private _service: CursoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Curso, public snackBar: MatSnackBar) {
 		this._service.getCampus().subscribe(result => this._campus = result);
 	}
 
 	save(): void {
-		if (this._name &&  this._nivel, this._campi) {
-			let curso = {
-				id: null,
-				name: this._name,
-				nivel: this._niveis[(this._nivel - 1)].nivel,
-				campi: this._campi
-			}
-			// this._service.add(curso)
-			// 	.subscribe(result => this._curso = result, error => this._error = error);
-			this.snackBar.open('ok', 'Fechar', { duration: 2000, });
-		} else {
-			this.snackBar.open('no', 'Fechar', { duration: 2000, });
-		}
+		// if (this._name &&  this._nivel, this._campi) {
+		// 	let curso = {
+		// 		id: null,
+		// 		name: this._name,
+		// 		nivel: this._niveis[(this._nivel - 1)].nivel,
+		// 		campi: this._campi
+		// 	}
+		// 	// this._service.add(curso)
+		// 	// 	.subscribe(result => this._curso = result, error => this._error = error);
+		// 	this.snackBar.open('ok', 'Fechar', { duration: 2000, });
+		// } else {
+		// 	this.snackBar.open('no', 'Fechar', { duration: 2000, });
+		// }
 	}
 
 	close(): void { this.dialogRef.close(); }
