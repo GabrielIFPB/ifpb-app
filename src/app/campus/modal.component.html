@@ -8,10 +8,12 @@
 		<mat-card-content ngModelGroup="campi">
 			<mat-form-field>
 				<input #name matInput placeholder="Cidade" name="cidade" required ngModel pattern="{{_expression}}">
+				<mat-label><mat-icon> location_city </mat-icon> <strong> Cidade</strong> </mat-label>
 			</mat-form-field>
 			<br>
 			<mat-form-field>
 				<input matInput placeholder="Sigla" name="sigla" required ngModel>
+				<mat-label><mat-icon> gesture </mat-icon> <strong> Sigla</strong> </mat-label>
 			</mat-form-field>
 			<br>
 			<label>Atvio: </label>
