@@ -8,13 +8,13 @@ import { MaterialCursoModule } from './curso.material.module';
 import { CursoService } from './curso.service';
 
 @NgModule({
-  imports: [
-    CommonModule,
+	imports: [
+		CommonModule,
 		FormsModule,
-    CursoRoutingModule,
-    MaterialCursoModule
-  ],
-  declarations: [ CursoComponent, ModalComponent ],
+		CursoRoutingModule,
+		MaterialCursoModule
+	],
+	declarations: [ CursoComponent, ModalComponent ],
 	entryComponents: [ ModalComponent ],
 	providers: [ CursoService ]
 })

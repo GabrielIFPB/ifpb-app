@@ -1,5 +1,5 @@
 import { Aluno } from '../aluno/aluno';
-import { Dia } from './Dia';
+import { Dia } from '../models/Dia';
 import { Refeicao } from '../refeicao/Refeicao';
 import { Edital } from '../edital/edital';
 import { Funcionario } from '../funcionario/funcionario';;
