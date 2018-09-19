@@ -68,9 +68,32 @@ export class ModalComponent {
 	private _campus: Campus[];
 	private _cursos: Curso[];
 
-	private _turnos: Array<string> = [ 'Matutino', 'Vespertino', 'Noturno' ];
-	private _periodos: Array<string> = [ '1 º', '2 º', '3 º', '4 º', '5 º', '6 º', '7 º', '8 º', '9 º', '10 º' ];
-	private _turmas: Array<string> = [ 'A', 'B', 'C', 'D', 'E' ];
+	private _turnos: Array<string> = [ 
+		'Matutino',
+		'Vespertino',
+		'Noturno'
+	];
+
+	private _periodos: Array<string> = [ 
+		'1 º',
+		'2 º',
+		'3 º',
+		'4 º',
+		'5 º',
+		'6 º',
+		'7 º',
+		'8 º',
+		'9 º',
+		'10 º'
+	];
+
+	private _turmas: Array<string> = [ 
+		'A',
+		'B',
+		'C',
+		'D',
+		'E'
+	];
 
 	constructor(private _service: AlunoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Aluno, public snackBar: MatSnackBar) {
 		this._service.getCampus().subscribe(result => this._campus = result);
@@ -78,8 +101,9 @@ export class ModalComponent {
 	}
 
 	onSubmit(form): void {
+		let aluno = form.form.value.aluno;
 		if (form.form.status == "VALID") {
-			this._service.add(form.form.value.aluno)
+			this._service.add(aluno)
 				.subscribe(result => this._aluno = result, error => this._error = error);
 			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 200000, panelClass: 'green' });
 		} else {

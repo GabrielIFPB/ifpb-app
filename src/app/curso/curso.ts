@@ -8,6 +8,6 @@ export interface Nivel {
 export interface Curso {
 	id: number
 	name: string
-	campi: any
+	campi: Campus | number
 	nivel: string
 }

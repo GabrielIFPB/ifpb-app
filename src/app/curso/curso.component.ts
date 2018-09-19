@@ -59,32 +59,28 @@ export class CursoComponent implements OnInit {
 })
 export class ModalComponent {
 
-	private _name: string = null;
-	private _nivel: number = null;
-	private _campi: number = null;
+	private _expression: string = `[A-Za-z '-çÂãÕõáéíóúâêîôû]*`;
 	private _error: any;
 	private _curso: Curso;
 	private _campus: Campus[];
-	private _niveis: Array<string> = [ 'Integrado', 'Subsequente', 'Superior', 'Pós graduação' ];
+	private _niveis: Array<string> = [ 
+		'Integrado',
+		'Subsequente',
+		'Superior',
+		'Pós graduação'
+	];
 
 	constructor(private _service: CursoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Curso, public snackBar: MatSnackBar) {
 		this._service.getCampus().subscribe(result => this._campus = result);
 	}
 
-	save(): void {
-		// if (this._name &&  this._nivel, this._campi) {
-		// 	let curso = {
-		// 		id: null,
-		// 		name: this._name,
-		// 		nivel: this._niveis[(this._nivel - 1)].nivel,
-		// 		campi: this._campi
-		// 	}
-		// 	// this._service.add(curso)
-		// 	// 	.subscribe(result => this._curso = result, error => this._error = error);
-		// 	this.snackBar.open('ok', 'Fechar', { duration: 2000, });
-		// } else {
-		// 	this.snackBar.open('no', 'Fechar', { duration: 2000, });
-		// }
+	onSubmit(form): void {
+		let curso = form.form.value.curso;
+		if (form.form.status == "VALID") {
+			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 200000, panelClass: 'green' });
+		} else {
+			this.snackBar.open('Erro ao salvar', 'Fechar', { duration: 2000, panelClass: 'red' });
+		}
 	}
 
 	close(): void { this.dialogRef.close(); }

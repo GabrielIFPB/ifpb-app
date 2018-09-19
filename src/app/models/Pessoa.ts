@@ -6,7 +6,7 @@ export interface Pessoa {
 	cpf: string
 	// keyAuth: string
 	email: string
-	campi: Campus | any  // podendo ser um objeto do tipo campus ou um id
+	campi: Campus | number  // podendo ser um objeto do tipo campus ou um id
 	ativo: boolean
 	dataInsercao: string
 	dateUpdate: string
