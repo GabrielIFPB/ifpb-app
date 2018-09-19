@@ -66,6 +66,7 @@ export class ModalComponent {
 	private _alunos: Aluno[];
 	private _campus: Campus[];
 	private _refeicoes: Refeicao[];
+	private _diarefeicao: DiaRefeicao;
 	private _editais: Edital[];
 
 	constructor(private _service: DiaRefeicaoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: DiaRefeicao, public snackBar: MatSnackBar) {
@@ -78,9 +79,11 @@ export class ModalComponent {
 	onSubmit(form): void {
 		let diarefeicao = form.form.value.diarefeicao;
 		if (form.form.status == "VALID") {
-
+			this._service.add(diarefeicao)
+				.subscribe(result => this._diarefeicao = result, error => this._error = error);
+			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 200000, panelClass: 'green' });
 		} else {
-
+			this.snackBar.open('Erro ao salvar', 'Fechar', { duration: 2000, panelClass: 'red' });
 		}
 	}
 
