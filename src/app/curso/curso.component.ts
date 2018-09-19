@@ -77,6 +77,8 @@ export class ModalComponent {
 	onSubmit(form): void {
 		let curso = form.form.value.curso;
 		if (form.form.status == "VALID") {
+			this._service.add( curso )
+				.subscribe(result => this._curso = result, error => this._error = error);
 			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 200000, panelClass: 'green' });
 		} else {
 			this.snackBar.open('Erro ao salvar', 'Fechar', { duration: 2000, panelClass: 'red' });
