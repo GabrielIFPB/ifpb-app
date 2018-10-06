@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { RouterModule } from '@angular/router';
+
 import { CampusComponent, ModalComponent } from './campus.component';
 import { CampusRoutingModule } from './campus-routing.module';
 import { MaterialCampusModule } from './campus.material.modules';
@@ -13,7 +15,8 @@ import { CampusDetalhesComponent } from './campus-detalhes/campus-detalhes.compo
 		CommonModule,
 		FormsModule,
 		CampusRoutingModule,
-		MaterialCampusModule
+		MaterialCampusModule,
+		RouterModule
 	],
 	declarations: [ CampusComponent, ModalComponent, CampusDetalhesComponent ],
 	entryComponents: [ ModalComponent ],

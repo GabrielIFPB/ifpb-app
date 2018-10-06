@@ -6,7 +6,7 @@ import { CampusDetalhesComponent } from './campus-detalhes/campus-detalhes.compo
 
 const APP_ROUTES: Routes = [
 	{ path: 'campus',	component: CampusComponent, },
-	{ path: 'campi-detalhe/:id', component: CampusDetalhesComponent, outlet: "sidebar" }
+	{ path: 'campi-detalhe/:id', component: CampusDetalhesComponent }
 ];
 
 @NgModule({
