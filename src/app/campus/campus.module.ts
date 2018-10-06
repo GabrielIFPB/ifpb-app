@@ -6,7 +6,7 @@ import { CampusComponent, ModalComponent } from './campus.component';
 import { CampusRoutingModule } from './campus-routing.module';
 import { MaterialCampusModule } from './campus.material.modules';
 import { CampusService } from './campus.service';
-import { EditarCampusComponent } from './editar.campus/editar.campus.component';
+import { CampusDetalhesComponent } from './campus-detalhes/campus-detalhes.component';
 
 @NgModule({
 	imports: [
@@ -15,7 +15,7 @@ import { EditarCampusComponent } from './editar.campus/editar.campus.component';
 		CampusRoutingModule,
 		MaterialCampusModule
 	],
-	declarations: [ CampusComponent, ModalComponent, EditarCampusComponent ],
+	declarations: [ CampusComponent, ModalComponent, CampusDetalhesComponent ],
 	entryComponents: [ ModalComponent ],
 	providers: [ CampusService ]
 })

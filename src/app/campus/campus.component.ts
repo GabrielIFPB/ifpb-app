@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+
 import { CampusService } from './campus.service';
 import { Campus } from './campus';
 
@@ -11,6 +15,9 @@ import { Campus } from './campus';
 })
 export class CampusComponent implements OnInit {
 
+	_campus$: Observable<Campus[]>;
+	selectedId: number;
+
 	private _name: string = null;
 	private _campus: Campus[];
 
@@ -20,14 +27,16 @@ export class CampusComponent implements OnInit {
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
-	constructor(private _service: CampusService, private dialog: MatDialog) { }
+	constructor(private _service: CampusService, private _route: ActivatedRoute, private dialog: MatDialog) { }
 
 	rowClicked(row: any): void { console.log(row); }
 
-	ngOnInit() { }
+	ngOnInit() { 
+	}
 
 	search() {
 		this.dataSource = new MatTableDataSource(this._campus);
+		// this._campus$.subscribe(result => this.dataSource.data = result);
 		this._service.getCampiByName(this._name.trim().toLowerCase()).subscribe(result => this.dataSource.data = result);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;

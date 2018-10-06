@@ -3,13 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AlunoComponent } from './aluno.component';
 
-const routes: Routes = [
+const APP_ROUTES: Routes = [
 	{ path: 'alunos',	component: AlunoComponent, },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(APP_ROUTES)
   ],
   declarations: []
 })
