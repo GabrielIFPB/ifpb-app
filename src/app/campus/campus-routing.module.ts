@@ -2,17 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { CampusComponent } from './campus.component';
-import { EditarCampusComponent } from './editar.campus/editar.campus.component';
+import { CampusDetalhesComponent } from './campus-detalhes/campus-detalhes.component';
 
-const routes: Routes = [
+const APP_ROUTES: Routes = [
 	{ path: 'campus',	component: CampusComponent, },
-	{ path: 'editar/campi',	component: EditarCampusComponent, },
+	{ path: 'campi-detalhe/:id', component: CampusDetalhesComponent, outlet: "sidebar" }
 ];
 
 @NgModule({
 	imports: [
-		RouterModule.forChild(routes)
-	],
-	declarations: []
+		RouterModule.forChild(APP_ROUTES)
+	]
 })
 export class CampusRoutingModule { }
