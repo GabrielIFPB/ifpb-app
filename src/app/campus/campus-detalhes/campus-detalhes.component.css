@@ -1,0 +1,15 @@
+
+mat-card{
+	margin: 2% 0 0 8.5%;
+	width: 50%;
+	padding: 26px 15px 36px 15px;
+	transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    display: block;
+	/* position: relative; */
+	align-items: center;
+	align-content: center;
+}
+
+mat-form-field{width: 100%;}
+#sim{margin-right: 5px;}
+#mat-input-1{height: 15px;}

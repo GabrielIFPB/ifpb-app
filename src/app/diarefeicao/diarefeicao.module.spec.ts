@@ -1,10 +1,10 @@
-import { DiarefeicaoModule } from './diarefeicao.module';
+import { DiaRefeicaoModule } from './diarefeicao.module';
 
 describe('DiarefeicaoModule', () => {
-  let diarefeicaoModule: DiarefeicaoModule;
+  let diarefeicaoModule: DiaRefeicaoModule;
 
   beforeEach(() => {
-    diarefeicaoModule = new DiarefeicaoModule();
+    diarefeicaoModule = new DiaRefeicaoModule();
   });
 
   it('should create an instance', () => {

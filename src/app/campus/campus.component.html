@@ -8,7 +8,7 @@
 		<mat-form-field>
 			<input matInput (keyup)="search()" placeholder="Filter" [(ngModel)]="_name">
 		</mat-form-field>
-		<button mat-button class="marge1" (click)="clear()">Limpar</button>
+		<button mat-button class="marge1" [disabled]="!_name" (click)="clear()">Limpar</button>
 		<button mat-button class="marge1" (click)="openDialog()">Cadastrar</button>
 		<div class="mat-elevation-z8">
 			<table mat-table [dataSource]="dataSource" matSort >
@@ -40,9 +40,6 @@
 				<ng-container matColumnDef="ativo">
 					<th mat-header-cell *matHeaderCellDef mat-sort-header> Ativo </th>
 					<td mat-cell *matCellDef="let row"> 
-						<!-- <mat-icon svgIcon="thumb_up"></mat-icon>  -->
-						<!-- <mat-icon svgIcon="left-arrow"></mat-icon>  -->
-						<!-- <mat-icon svgIcon="animals:cat"></mat-icon> -->
 						<i class="material-icons">{{ row.ativo ? 'thumb_up' : 'thumb_down' }}</i>
 					</td>
 				</ng-container>
@@ -50,11 +47,11 @@
 				<!-- Edit Column -->
 				<ng-container matColumnDef="edit">
 					<th mat-header-cell *matHeaderCellDef mat-sort-header> Editar </th>
-					<td routerLinkActive="activa" mat-cell *matCellDef="let row"><a matTooltip="Editar"><button routerLink="['/campi-detalhe/', 1]" mat-button><mat-icon>edit</mat-icon></button></a></td>
+					<td routerLinkActive="activa" mat-cell *matCellDef="let row"><a matTooltip="Editar"><button routerLinkActive="active" [routerLink]="['/campi-detalhe/', row.id]" mat-button><mat-icon>edit</mat-icon></button></a></td>
 				</ng-container>
 			
 				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-				<tr mat-button mat-row *matRowDef="let row; columns: displayedColumns;" routerLinkActive="active" (click)="rowClicked(row)">
+				<tr mat-button mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClicked(row)">
 				</tr>
 			</table>
 			<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
