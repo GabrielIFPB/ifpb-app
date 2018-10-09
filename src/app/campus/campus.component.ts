@@ -29,7 +29,6 @@ export class CampusComponent implements OnInit {
 
 	search() {
 		this.dataSource = new MatTableDataSource(this._campus);
-		// this._campus$.subscribe(result => this.dataSource.data = result);
 		this._service.getCampiByName(this._name.trim().toLowerCase()).subscribe(result => this.dataSource.data = result);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;

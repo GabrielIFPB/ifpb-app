@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import {FormBuilder, FormGroup} from '@angular/forms';
+
+import { ActivatedRoute } from '@angular/router';
 
 import { CampusService } from '../campus.service';
 import { Campus } from '../campus';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-editar.campus',
@@ -14,22 +15,31 @@ import { Campus } from '../campus';
 })
 export class CampusDetalhesComponent implements OnInit {
 
-	private _campus$: Observable<Campus>;
+	private _campi: Campus;
+	private _unsub: Subscription;
+	private _id: string
+	private _expression: string = `[A-Za-z '-çÂãÕõáéíóúâêîôû]*`;
 
-	constructor(private route: ActivatedRoute, private router: Router, private _service: CampusService) { }
+	private options: FormGroup;
+
+	constructor(private fb: FormBuilder, private route: ActivatedRoute, private _service: CampusService) {
+		
+		console.log(this._unsub)
+		console.log(this._campi)
+	}
 
 	ngOnInit() {
-		let id = this.route.snapshot.paramMap.get('id');
-		// this._campus$ = this._route.paramMap.pipe(
-		// 	switchMap(params => {
-		// 		this.selectedId = +params.get('id');
-		// 		return this._service.getCampus();
-		// 	})
-		// );
-		this._campus$ = this._service.getCampi(Number(id));
+		this._unsub = this.route.params.subscribe(
+			(params: any) => {
+				this._id = params['id']
+				this._unsub = this._service.getCampi(Number(this._id))
+											.subscribe(result => this._campi = result);
+			}
+		);
 	}
 
-	gotoCampus() {
-		this.router.navigate(['/campus']);
+	ngOnDestroy() {
+		this._unsub.unsubscribe();
 	}
+
 }
