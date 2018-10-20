@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app fsdfadfadfa';
-  login = false;
-  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
+  // title = 'app fsdfadfadfa';
+  // login = false;
+  private isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
   constructor(private breakpointObserver: BreakpointObserver) {}
 }
