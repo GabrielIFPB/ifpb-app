@@ -6,6 +6,7 @@ import { AlunoComponent, ModalComponent } from './aluno.component';
 import { AlunoRoutingModule } from './aluno-routing.module';
 import { MaterialAlunoModule } from './aluno.material.module';
 import { AlunoService } from './aluno.service';
+import { AlunoDetalhesComponent } from './aluno-detalhes/aluno-detalhes.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { AlunoService } from './aluno.service';
     AlunoRoutingModule,
     MaterialAlunoModule
   ],
-  declarations: [ AlunoComponent, ModalComponent ],
+  declarations: [ AlunoComponent, ModalComponent, AlunoDetalhesComponent ],
 	entryComponents: [ ModalComponent ],
 	providers: [ AlunoService ]
 })

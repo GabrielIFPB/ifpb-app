@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import {FormBuilder, FormGroup} from '@angular/forms';
-
 import { ActivatedRoute } from '@angular/router';
 
 import { CampusService } from '../campus.service';
@@ -20,12 +18,7 @@ export class CampusDetalhesComponent implements OnInit {
 	private _id: string
 	private _expression: string = `[A-Za-z '-çÂãÕõáéíóúâêîôû]*`;
 
-	private options: FormGroup;
-
-	constructor(private fb: FormBuilder, private route: ActivatedRoute, private _service: CampusService) {
-		
-		console.log(this._unsub)
-		console.log(this._campi)
+	constructor(private route: ActivatedRoute, private _service: CampusService) {
 	}
 
 	ngOnInit() {
@@ -42,4 +35,13 @@ export class CampusDetalhesComponent implements OnInit {
 		this._unsub.unsubscribe();
 	}
 
+	onSubmit(form): void {
+		let campi = form.form.value.campi;
+		if (form.form.status == "VALID" && campi.ativo) {
+			campi.id = this._id;
+			this._unsub = this._service.put(campi).subscribe();
+		} else {
+			console.log("else else")
+		}
+	}
 }

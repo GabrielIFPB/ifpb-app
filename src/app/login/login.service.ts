@@ -1,9 +1,37 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+
+const httpOptions = {
+	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class LoginService {
 
-  constructor() { }
+	private _urlFuncio: string = 'http://localhost:3000/funcionarios';
+
+	private _handleError<T>(operation = 'operation', result?: T) {
+		return (error: any): Observable<T> => {
+			console.error(error);
+			console.error(error, `Operation: --> ${operation} <--`);
+			console.log(`${operation} failed: ${error.message}`);
+			return of(result as T)
+		}
+	}
+	
+	constructor(private _http: HttpClient) { }
+
+	logar(username: string, password: string): Observable<any> {
+		if (!username.trim() || !password.trim()) return of([]);
+		let url = `${this._urlFuncio}?email=${username}&password=${password}`;
+		return this._http.get<any>(url, httpOptions)
+			.pipe(
+				tap(() => console.log('Fetched login!')),
+				catchError(this._handleError('error login!', []))
+			);
+	}
 }

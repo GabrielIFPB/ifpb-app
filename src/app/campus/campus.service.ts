@@ -42,8 +42,8 @@ export class CampusService {
 	}
 
 	getCampi(campus: Campus | number): Observable<Campus> {
-		const id = typeof campus === 'number' ? campus : campus.id;
-		const url = `${this._url}/${id}`;
+		let id = typeof campus === 'number' ? campus : campus.id;
+		let url = `${this._url}/${id}`;
 		return this._http.get<Campus>(url)
 			.pipe(
 				tap(result => console.log('get ok!')),
@@ -51,11 +51,13 @@ export class CampusService {
 			);
 	}
 
-	put(campus: Campus): Observable<Campus> {
-		return this._http.put<Campus>(this._url, campus, httpOptions)
+	put(campus: Campus | number): Observable<Campus> {
+		let id = typeof campus === 'number' ? campus : campus.id;
+		let url = `${this._url}/${id}`;
+		return this._http.put<Campus>(url, campus, httpOptions)
 			.pipe(
-				tap(() => console.log('')),
-				catchError(this._handleError<Campus>(''))
+				tap(() => console.log('ok campi update')),
+				catchError(this._handleError<Campus>('erro update campi'))
 			);
 	}
 
