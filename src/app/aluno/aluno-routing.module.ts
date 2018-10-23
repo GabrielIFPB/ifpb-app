@@ -6,7 +6,7 @@ import { AlunoDetalhesComponent } from './aluno-detalhes/aluno-detalhes.componen
 
 const APP_ROUTES: Routes = [
 	{ path: 'alunos',	component: AlunoComponent, },
-	{ path: 'aluno/:id',	component: AlunoDetalhesComponent, },
+	{ path: 'aluno-detalhe/:id',	component: AlunoDetalhesComponent, },
 ];
 
 @NgModule({

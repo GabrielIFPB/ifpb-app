@@ -33,7 +33,7 @@
                 <!-- Edit Column -->
                 <ng-container matColumnDef="edit">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Editar </th>
-                    <td mat-cell *matCellDef="let row"><a routerLink="." matTooltip="Editar"><button mat-button><mat-icon>edit</mat-icon></button></a></td>
+                    <td mat-cell *matCellDef="let row"><a matTooltip="Editar"><button routerLinkActive="active" [routerLink]="['/aluno-detalhe/', row.id]" mat-button><mat-icon>edit</mat-icon></button></a></td>
                 </ng-container>
             
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
