@@ -8,8 +8,8 @@
         <mat-form-field>
             <input matInput (keyup)="search()" placeholder="Filter" [(ngModel)]="_name">
         </mat-form-field>
-        <button mat-button class="marge1" [disabled]="!_name" (click)="clear()">Limpar</button>
-        <button mat-button class="marge1" (click)="openDialog()">Cadastrar</button>
+        <button mat-button class="marge1" [disabled]="!_name" (click)="clear()">Limpar<mat-icon>clear</mat-icon></button>
+        <button mat-button class="marge1" (click)="openDialog()">Cadastrar<mat-icon>person_add</mat-icon></button>
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" matSort >
                 <!-- ID Column -->
