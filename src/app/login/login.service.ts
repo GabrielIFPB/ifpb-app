@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, of, throwError, pipe } from 'rxjs';
+import { catchError, tap, map, filter, mergeMap } from 'rxjs/operators';
 
 const httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -33,5 +33,9 @@ export class LoginService {
 				tap(() => console.log('Fetched login!')),
 				catchError(this._handleError('error login!', []))
 			);
+	}
+
+	validateUser(login: any) {
+		let userData = "username=" + login.username + "&password=" + login.password 
 	}
 }

@@ -1,3 +1,75 @@
-<p>
-  aluno-detalhes works!
-</p>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+	<mat-card>
+		<mat-card-header>
+			<div mat-card-avatar><mat-icon>assignment</mat-icon></div>
+			<mat-card-title class="title">Cadastrar aluno</mat-card-title>
+			<!-- <mat-card-subtitle>Publicos</mat-card-subtitle> -->
+		</mat-card-header>
+		<mat-card-content ngModelGroup="aluno">
+
+				<mat-form-field>
+					<mat-label><mat-icon>import_contacts</mat-icon> <b> Matrícula</b></mat-label>
+					<input matInput type="number" placeholder="Matrícula" name="matrcula" required ngModel pattern="{{ _exprNumber }}">
+					<mat-hint align=""> <i>Formato: 201712320058</i> </mat-hint>
+				</mat-form-field>
+				
+				<mat-form-field>
+					<mat-label><mat-icon>face</mat-icon> <b> Nome</b></mat-label>
+					<input #name matInput type="text" placeholder="Nome" name="name" required ngModel pattern="{{ _expression }}">
+					<mat-hint align=""> <i>Formato: Gabriel da Silva</i> </mat-hint>
+				</mat-form-field>
+	
+				<mat-form-field>
+					<mat-label><mat-icon>filter_9_plus</mat-icon> <b> CPF</b></mat-label>
+					<input matInput placeholder="CPF" name="cpf" required ngModel pattern="{{ _exprcpf }}">
+					<mat-hint align=""> <i>Formato: 000.111.222-33</i> </mat-hint>
+				</mat-form-field>
+				
+				<mat-form-field>
+					<mat-label><mat-icon>alternate_email</mat-icon> <b> E-mail</b></mat-label>
+					<input matInput type="email" placeholder="E-mail" name="email" required ngModel email>
+					<mat-hint align=""> <i>Formato: user.name@academico.ifpb.edu.br</i> </mat-hint>
+				</mat-form-field>
+	
+				<mat-form-field>
+					<mat-select name="campi" required ngModel>
+						<mat-option *ngFor="let campi of _campus" [value]="campi.id">{{ campi.sigla }} - {{ campi.cidade }}</mat-option>
+					</mat-select>
+					<mat-label><mat-icon>business</mat-icon> <b> Campus</b> </mat-label>
+				</mat-form-field>
+	
+				<mat-form-field>
+					<mat-select name="curso" required ngModel>
+						<mat-option *ngFor="let curso of _cursos" [value]="curso.id">{{ curso.name }}</mat-option>
+					</mat-select>
+					<mat-label><mat-icon>school</mat-icon> <b> Curso</b> </mat-label>
+				</mat-form-field>
+	
+				<mat-form-field>
+					<mat-select name="periodo" required ngModel>
+						<mat-option *ngFor="let periodo of _periodos" [value]="periodo">{{ periodo }}</mat-option>
+					</mat-select>
+					<mat-label> <mat-icon>calendar_today</mat-icon> <b> Período</b> </mat-label>
+				</mat-form-field>
+	
+				<mat-form-field>
+					<mat-select name="turno" required ngModel>
+						<mat-option *ngFor="let turno of _turnos" [value]="turno">{{ turno }}</mat-option>
+					</mat-select>
+					<mat-label><mat-icon>access_time</mat-icon> <b> Turno</b> </mat-label>
+				</mat-form-field>
+	
+				<mat-form-field>
+					<mat-select name="turma" required ngModel>
+						<mat-option *ngFor="let turma of _turmas" [value]="turma">{{ turma }}</mat-option>
+					</mat-select>
+					<mat-label><mat-icon>group</mat-icon> <b> Turma</b> </mat-label>
+				</mat-form-field>
+            
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button type="button" (click)="close()">Fechar</button>
+            <button mat-button type="submit" [disabled]="!form.valid" >Salvar</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

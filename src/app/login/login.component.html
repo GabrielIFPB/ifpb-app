@@ -9,13 +9,13 @@
 			<mat-form-field class="full-width bottom-15px">
 				<input matInput ngModel name="username" placeholder="Usuário">
 				<mat-label> <mat-icon> account_circle </mat-icon> <b> Usuário</b> </mat-label>
-				<mat-hint align=""> <i>Formato: 12:30</i> </mat-hint>
+				<mat-hint align=""> <i>Formato: user.name@academico.ifpb.edu.br</i> </mat-hint>
 			</mat-form-field>
 
 			<mat-form-field class="full-width">
 				<input matInput ngModel name="password" placeholder="Enter your password" [type]="_hide ? 'password' : 'text'">
 				<mat-icon matSuffix (click)="_hide = !_hide">{{_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-				<mat-hint align=""> <i>Formato: 12:30</i> </mat-hint>
+				<!-- <mat-hint align=""> <i>Formato: 12:30</i> </mat-hint> -->
 			</mat-form-field>
 
 		</mat-card-content>
