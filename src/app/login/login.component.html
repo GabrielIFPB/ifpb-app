@@ -15,12 +15,10 @@
 			<mat-form-field class="full-width">
 				<input matInput ngModel name="password" placeholder="Enter your password" [type]="_hide ? 'password' : 'text'">
 				<mat-icon matSuffix (click)="_hide = !_hide">{{_hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-				<!-- <mat-hint align=""> <i>Formato: 12:30</i> </mat-hint> -->
 			</mat-form-field>
 
 		</mat-card-content>
 		<mat-card-actions>
-			<!-- <button mat-button>LIKE</button> -->
 			<button mat-button type="submit" [disabled]="!form.valid" >Logar</button>
 		</mat-card-actions>
 		<mat-card-footer>
