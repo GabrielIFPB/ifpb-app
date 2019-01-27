@@ -34,7 +34,6 @@ export class LoginService {
 		console.log(password);
 		if (!username.trim() || !password.trim()) return of([]);
 		let url = `${this._urlAuth}?username=${username}&password=${password}`;
-		console.log(url);
 		return this._http.get<Data[]>(url, httpOptions)
 			.pipe(
 				tap(() => console.log('Fetched login!')),
