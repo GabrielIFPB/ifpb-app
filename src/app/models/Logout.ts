@@ -1,7 +1,7 @@
-import { Login } from '../login/login';
+import { User } from '../login/login';
 
 export interface Logout {
 	id: number
-	login: Login
+	login: User
 	registro: string
 }

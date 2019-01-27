@@ -5,6 +5,7 @@ import { FormsModule }    from '@angular/forms';
 import { PanelControll } from './PanelControll';
 import { PanelRoutingModule } from './panel-routing.module';
 import { MaterialPanelModule } from './Material.panel';
+import { AuthGuard } from '../login/auth.guard';
 
 @NgModule({
 	imports: [
@@ -17,7 +18,7 @@ import { MaterialPanelModule } from './Material.panel';
 		PanelControll,
 	],
 	providers: [
-		
+		AuthGuard
 	]
 })
 export class PanelModule {}
