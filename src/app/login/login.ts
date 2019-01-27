@@ -9,4 +9,7 @@ export interface User {
 export interface Data {
 	message: string
 	success: boolean
+	password: string
+    token: string
+    username: string
 }

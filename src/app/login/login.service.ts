@@ -14,9 +14,10 @@ const httpOptions = {
 })
 export class LoginService {
 
-	private _urlFuncio: string = 'http://localhost:3000/funcionarios';
+	private _urlAuth: string = 'http://localhost:3000/auth';
 	private _status = false;
 
+	// utilizado para exibir erros
 	private _handleError<T>(operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
 			console.error(error);
@@ -28,17 +29,16 @@ export class LoginService {
 	
 	constructor(private _http: HttpClient) { }
 
-	auth(username: string, password: string): Observable<any> {
+	// autenticação de usuário
+	auth(username: string, password: string): Observable<Data[]> {
 		console.log(password);
 		if (!username.trim() || !password.trim()) return of([]);
-		// let url = `${this._urlFuncio}?email=${username}&password=${password}`;
-		return this._http.post<Data>(this._urlFuncio, {
-			username,
-			password
-		}, httpOptions)
+		let url = `${this._urlAuth}?username=${username}&password=${password}`;
+		console.log(url);
+		return this._http.get<Data[]>(url, httpOptions)
 			.pipe(
 				tap(() => console.log('Fetched login!')),
-				catchError(this._handleError('error login!', []))
+				catchError(this._handleError('error autenticação!', []))
 			);
 	}
 
