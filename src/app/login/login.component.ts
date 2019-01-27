@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
+import { Data } from './login';
 import { LoginService } from './login.service';
-import { Router } from '@angular/router';
 
-import { AES } from 'crypto-ts';
+import sha256 from 'crypto-js/sha256';
+import hmacSHA512 from 'crypto-js/hmac-sha512';
+import Base64 from 'crypto-js/enc-base64';
 
 @Component({
 	selector: 'app-login',
@@ -14,6 +17,7 @@ import { AES } from 'crypto-ts';
 
 export class LoginComponent implements OnInit {
 
+	private data: Data[];
 	private _hide: boolean = true;
 
 	constructor(
@@ -25,15 +29,19 @@ export class LoginComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	onSubmit(form): void {
-		let data = null;
+	onSubmit(form: any): void {
 		let user = form.form.value.user; // pegando o obj do form
+		let hashDigest = sha256(user.password);
+		let hmacDigest = Base64.stringify(hmacSHA512( hashDigest, ''));
+				   
 		this.service.auth(
 				user.username,
-				AES.encrypt(user.password, '').toString() // após o password pode-se usar uma chave
-			).subscribe(result => data = result);
-		console.log(data);
-		if (data && data[0].success) {
+				hmacDigest
+			).subscribe(
+					result => this.data = result
+				);
+		console.log(this.data)
+		if (this.data && this.data.length && this.data[0].success) {
 			this.router.navigate(['panel'])
 			this.service.setStatus(true);
 		} else {
@@ -43,5 +51,4 @@ export class LoginComponent implements OnInit {
 			});
 		}
 	}
-
 }

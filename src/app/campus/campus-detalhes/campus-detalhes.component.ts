@@ -18,8 +18,10 @@ export class CampusDetalhesComponent implements OnInit {
 	private _id: string
 	private _expression: string = `[A-Za-z '-çÂãÕõáéíóúâêîôû]*`;
 
-	constructor(private route: ActivatedRoute, private _service: CampusService) {
-	}
+	constructor(
+		private route: ActivatedRoute, 
+		private _service: CampusService
+	) {	}
 
 	ngOnInit() {
 		this._unsub = this.route.params.subscribe(
@@ -35,7 +37,7 @@ export class CampusDetalhesComponent implements OnInit {
 		this._unsub.unsubscribe();
 	}
 
-	onSubmit(form): void {
+	onSubmit(form: any): void {
 		let campi = form.form.value.campi;
 		if (form.form.status == "VALID" && campi.ativo) {
 			campi.id = this._id;

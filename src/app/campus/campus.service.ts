@@ -46,7 +46,7 @@ export class CampusService {
 		let url = `${this._url}/${id}`;
 		return this._http.get<Campus>(url)
 			.pipe(
-				tap(result => console.log('get ok!')),
+				tap(() => console.log('get ok!')),
 				catchError(this._handleError<Campus>('get'))
 			);
 	}
