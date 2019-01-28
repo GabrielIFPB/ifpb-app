@@ -33,20 +33,20 @@ export class LoginComponent implements OnInit {
 		let hashDigest = sha256(user.password);
 		let hmacDigest = Base64.stringify(hmacSHA512(hashDigest, ''));
 		this.service.auth(
-				user.username,
-				hmacDigest
-			).subscribe(
-					(data) => {
-						if (data && data.length && data[0].success) {
-							this.router.navigate(['panel'])
-							this.service.setStatus(true);
-						} else {
-							this.snackBar.open('Não tem permissão!', 'Fechar', { 
-								duration: 2000,
-								panelClass: '' 
-							});
-						}
-					}
-				);
+			user.username,
+			hmacDigest
+		).subscribe(
+			(data) => {
+				if (data && data.length && data[0].success) {
+					this.router.navigate(['panel'])
+					this.service.setStatus(true);
+				} else {
+					this.snackBar.open('Não tem permissão!', 'Fechar', { 
+						duration: 2000,
+						panelClass: '' 
+					});
+				}
+			}
+		);
 	}
 }
