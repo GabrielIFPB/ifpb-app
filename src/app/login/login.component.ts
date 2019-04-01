@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
 		let user = form.form.value.user; // pegando o obj do form
 		let hashDigest = sha256(user.password);
 		let hmacDigest = Base64.stringify(hmacSHA512(hashDigest, ''));
+		console.log(hmacDigest);
 		this.service.auth(
 			user.username,
 			hmacDigest

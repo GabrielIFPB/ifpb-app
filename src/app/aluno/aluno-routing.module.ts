@@ -6,7 +6,7 @@ import { AlunoDetalhesComponent } from './aluno-detalhes/aluno-detalhes.componen
 import { AuthGuard } from '../login/auth.guard';
 
 const APP_ROUTES: Routes = [
-	{ path: 'alunos',	component: AlunoComponent, },
+	{ path: 'alunos',	component: AlunoComponent, canActivate: [ AuthGuard ] },
 	{
     path: 'aluno-detalhe/:id',
     component: AlunoDetalhesComponent,

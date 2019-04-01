@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatDialog, 
+	MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 
 import { CampusService } from './campus.service';
 import { Campus } from './campus';
