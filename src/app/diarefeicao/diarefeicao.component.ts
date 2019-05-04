@@ -68,6 +68,15 @@ export class ModalComponent {
 	private _refeicoes: Refeicao[];
 	private _diarefeicao: DiaRefeicao;
 	private _editais: Edital[];
+	private _diaSemana: Array<string> = [
+		'Domingo',
+		'Segunda',
+		'Terça', 
+		'Quarta',
+		'Quinta', 
+		'Sexta',
+		'Sábado'
+	];
 
 	constructor(private _service: DiaRefeicaoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: DiaRefeicao, public snackBar: MatSnackBar) {
 		this._service.getAlunos().subscribe(result => this._alunos = result);
