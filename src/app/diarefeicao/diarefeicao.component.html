@@ -25,6 +25,18 @@
 				</ng-container>
 
 				<!-- ALUNO Column -->
+				<!-- <ng-container matColumnDef="aluno">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Aluno </th>
+					<td mat-cell *matCellDef="let row"> {{ row.aluno }} </td>
+				</ng-container> -->
+
+				<!-- DIA Column -->
+				<ng-container matColumnDef="diaSemana">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> Dia </th>
+					<td mat-cell *matCellDef="let row"> {{ row.dia }} </td>
+				</ng-container>
+
+				<!-- ALUNO Column -->
 				<ng-container matColumnDef="aluno">
 					<th mat-header-cell *matHeaderCellDef mat-sort-header> Aluno </th>
 					<td mat-cell *matCellDef="let row"> {{ row.aluno }} </td>

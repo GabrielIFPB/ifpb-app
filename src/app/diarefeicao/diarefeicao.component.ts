@@ -18,7 +18,7 @@ export class DiaRefeicaoComponent implements OnInit {
 	private _name: string = null;
 	private _diarefecao: DiaRefeicao[];
 
-	displayedColumns: string[] = ['id', 'refeicao', 'custo', 'campi', 'edit'];
+	displayedColumns: string[] = ['id', 'refeicao', 'diaSemana', 'campi', 'edit'];
   	dataSource: MatTableDataSource<DiaRefeicao>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
