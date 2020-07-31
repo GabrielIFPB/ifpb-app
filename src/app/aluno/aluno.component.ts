@@ -95,7 +95,10 @@ export class ModalComponent {
 		'E'
 	];
 
-	constructor(private _service: AlunoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: Aluno, public snackBar: MatSnackBar) {
+	constructor(private _service: AlunoService, 
+				public dialogRef: MatDialogRef<ModalComponent>, 
+				@Inject(MAT_DIALOG_DATA) public data: Aluno,
+				public snackBar: MatSnackBar) {
 		this._service.getCampus().subscribe(result => this._campus = result);
 		this._service.getCursos().subscribe(result => this._cursos = result);
 	}
@@ -105,9 +108,15 @@ export class ModalComponent {
 		if (form.form.status == "VALID") {
 			this._service.add(aluno)
 				.subscribe(result => this._aluno = result, error => this._error = error);
-			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 200000, panelClass: 'green' });
+			this.snackBar.open('Salvo com sucesso!', 'Fechar', { 
+				duration: 200000,
+				panelClass: 'green' 
+			});
 		} else {
-			this.snackBar.open('Erro ao salvar', 'Fechar', { duration: 2000, panelClass: 'red' });
+			this.snackBar.open('Erro ao salvar', 'Fechar', { 
+				duration: 2000, 
+				panelClass: 'red' 
+			});
 		}
 	}
 

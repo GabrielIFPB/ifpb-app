@@ -22,6 +22,13 @@
 			</mat-form-field>
 
 			<mat-form-field>
+				<mat-select name="diaSemana" required ngModel>
+					<mat-option *ngFor="let dia of _diaSemana" [value]="dia">{{ dia }}</mat-option>
+				</mat-select>
+				<mat-label> <mat-icon> face </mat-icon> <b> Dia da Semana</b> </mat-label>
+			</mat-form-field>
+
+			<mat-form-field>
 				<mat-select name="campi" required ngModel>
 					<mat-option *ngFor="let campi of _campus" [value]="campi.id">{{ campi.sigla }}</mat-option>
 				</mat-select>

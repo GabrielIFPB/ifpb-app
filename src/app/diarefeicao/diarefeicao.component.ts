@@ -18,13 +18,14 @@ export class DiaRefeicaoComponent implements OnInit {
 	private _name: string = null;
 	private _diarefecao: DiaRefeicao[];
 
-	displayedColumns: string[] = ['id', 'refeicao', 'aluno', 'campi', 'edit'];
+	displayedColumns: string[] = ['id', 'refeicao', 'diaSemana', 'campi', 'edit'];
   	dataSource: MatTableDataSource<DiaRefeicao>;
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 	@ViewChild(MatSort) sort: MatSort;
 
-	constructor(private _service: DiaRefeicaoService, private dialog: MatDialog) { }
+	constructor(private _service: DiaRefeicaoService,
+					private dialog: MatDialog) { }
 
 	rowClicked(row: any): void { console.log(row); }
 
@@ -32,7 +33,11 @@ export class DiaRefeicaoComponent implements OnInit {
 
 	search() {
 		this.dataSource = new MatTableDataSource(this._diarefecao);
-		this._service.getDiaRefeicaoByName(this._name.trim().toLowerCase()).subscribe(result => this.dataSource.data = result);
+		this._service.getDiaRefeicaoByName(
+				this._name.trim().toLowerCase()
+			).subscribe(
+				result => this.dataSource.data = result
+			);
 		this.dataSource.paginator = this.paginator;
 		this.dataSource.sort = this.sort;
 	}
@@ -68,22 +73,51 @@ export class ModalComponent {
 	private _refeicoes: Refeicao[];
 	private _diarefeicao: DiaRefeicao;
 	private _editais: Edital[];
+	private _diaSemana: Array<string> = [
+		'Domingo',
+		'Segunda',
+		'Terça', 
+		'Quarta',
+		'Quinta', 
+		'Sexta',
+		'Sábado'
+	];
 
-	constructor(private _service: DiaRefeicaoService, public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: DiaRefeicao, public snackBar: MatSnackBar) {
-		this._service.getAlunos().subscribe(result => this._alunos = result);
-		this._service.getCampus().subscribe(result => this._campus = result);
-		this._service.getEditais().subscribe(result => this._editais = result);
-		this._service.getRefeicoes().subscribe(result => this._refeicoes = result);
+	constructor(private _service: DiaRefeicaoService, 
+				public dialogRef: MatDialogRef<ModalComponent>, 
+				@Inject(MAT_DIALOG_DATA) public data: DiaRefeicao, 
+				public snackBar: MatSnackBar) {
+
+		this._service.getAlunos().subscribe(
+			result => this._alunos = result);
+
+		this._service.getCampus().subscribe(
+			result => this._campus = result);
+
+		this._service.getEditais().subscribe(
+			result => this._editais = result);
+
+		this._service.getRefeicoes().subscribe(
+			result => this._refeicoes = result);
 	}
 
 	onSubmit(form): void {
 		let diarefeicao = form.form.value.diarefeicao;
 		if (form.form.status == "VALID") {
 			this._service.add(diarefeicao)
-				.subscribe(result => this._diarefeicao = result, error => this._error = error);
-			this.snackBar.open('Salvo com sucesso!', 'Fechar', { duration: 200000, panelClass: 'green' });
+				.subscribe(
+					result => this._diarefeicao = result,
+					error => this._error = error
+				);
+			this.snackBar.open('Salvo com sucesso!', 'Fechar', { 
+				duration: 200000,
+				panelClass: 'green' 
+			});
 		} else {
-			this.snackBar.open('Erro ao salvar', 'Fechar', { duration: 2000, panelClass: 'red' });
+			this.snackBar.open('Erro ao salvar', 'Fechar', { 
+				duration: 2000,
+				panelClass: 'red' 
+			});
 		}
 	}
 

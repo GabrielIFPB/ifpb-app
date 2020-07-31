@@ -15,7 +15,7 @@ const httpOptions = {
 export class LoginService {
 
 	private _urlAuth: string = 'http://localhost:3000/auth';
-	private _status = false;
+	private _status = JSON.parse(localStorage.getItem('loggedIn') || 'false');
 
 	// utilizado para exibir erros
 	private _handleError<T>(operation = 'operation', result?: T) {
@@ -30,8 +30,9 @@ export class LoginService {
 	constructor(private _http: HttpClient) { }
 
 	// autenticação de usuário
+	// usando get por conta do json-server só aceitar post para salvar 
+	// já em uma aplicação normal deverá usar o post
 	auth(username: string, password: string): Observable<Data[]> {
-		console.log(password);
 		if (!username.trim() || !password.trim()) return of([]);
 		let url = `${this._urlAuth}?username=${username}&password=${password}`;
 		return this._http.get<Data[]>(url, httpOptions)
@@ -41,11 +42,18 @@ export class LoginService {
 			);
 	}
 
+	getToken(): Observable<Data> {
+		return this._http.get<Data>(this._urlAuth);
+	}
+
 	getStatus() {
-		return this._status;
+		return JSON.parse(
+			localStorage.getItem('loggedIn') || this._status.toString()
+		);
 	}
 
 	setStatus(value: boolean) {
 		this._status = value;
+		localStorage.setItem('loggeIn', 'true');
 	}
 }

@@ -17,7 +17,6 @@ import Base64 from 'crypto-js/enc-base64';
 
 export class LoginComponent implements OnInit {
 
-	private data: Data[];
 	private _hide: boolean = true;
 
 	constructor(
@@ -32,23 +31,23 @@ export class LoginComponent implements OnInit {
 	onSubmit(form: any): void {
 		let user = form.form.value.user; // pegando o obj do form
 		let hashDigest = sha256(user.password);
-		let hmacDigest = Base64.stringify(hmacSHA512( hashDigest, ''));
-				   
+		let hmacDigest = Base64.stringify(hmacSHA512(hashDigest, ''));
+		console.log(hmacDigest);
 		this.service.auth(
-				user.username,
-				hmacDigest
-			).subscribe(
-					result => this.data = result
-				);
-		console.log(this.data)
-		if (this.data && this.data.length && this.data[0].success) {
-			this.router.navigate(['panel'])
-			this.service.setStatus(true);
-		} else {
-			this.snackBar.open('Não tem permissão!', 'Fechar', { 
-				duration: 2000,
-				panelClass: '' 
-			});
-		}
+			user.username,
+			hmacDigest
+		).subscribe(
+			(data) => {
+				if (data && data.length && data[0].success) {
+					this.router.navigate(['panel'])
+					this.service.setStatus(true);
+				} else {
+					this.snackBar.open('Não tem permissão!', 'Fechar', { 
+						duration: 2000,
+						panelClass: '' 
+					});
+				}
+			}
+		);
 	}
 }
